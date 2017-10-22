@@ -761,11 +761,11 @@ dl {
   color: rgba(255, 255, 255, 0.5);
   height: 100%;
   left: 0;
-  padding: 8em 4em 0 0;
+  padding: 8em 4em 0 4em;
   position: fixed;
   text-align: right;
   top: 0;
-  width: 30%;
+  width: calc(30% - 4em);
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
@@ -841,8 +841,8 @@ dl {
 #main {
   padding: 2em 4em 2em 4em;
   width: calc(100% - 30% - 12em);
-  margin: 0;
-  float: right;
+  margin-left: calc(30% + 4em);
+  max-width: 650px
 }
 
 #main > section {
@@ -1003,6 +1003,8 @@ footer#footer{
     width: calc(100% - 3em);
     float: none;
     padding: 2.25em 1.5em 0.25em 1.5em;
+    max-width: 1000px;
+    margin: 0;
   }
   section#three {
     display: flex;
