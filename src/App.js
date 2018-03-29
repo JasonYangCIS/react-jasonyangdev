@@ -9,7 +9,9 @@ class Header extends Component {
       loading: true
     };
   }
-
+  componentDidMount(){
+    this.handleClick();
+  }
   handleClick() {
     var colorArr = [
       "255, 152, 0",    //Orange
@@ -65,9 +67,8 @@ class Header extends Component {
     return(
       <header id="header">
         <div className="image avatar"><a href="javascript:void(0);" onClick={() => this.handleClick()}><img src={"images/avatar.jpg"}how alt="" /></a></div>
-        <h1><strong>I am Jason.</strong> Motivated<br />
-          young developer, looking to <br/>
-          learn, grow and experiment.</h1>
+        <h1>i am <strong>{"<"}Jason/{">"}</strong> motivated<br />
+          young software engineer, looking to learn, grow and experiment in all aspects of web development.</h1>
       </header>
      )
   }
@@ -93,19 +94,25 @@ class Skills extends Component {
        <header className="major">
         <h2>My Skills</h2>
        </header>
-       <div className="myskillicons"><img src="images/icons/php.png"/><span className="caption">PHP</span></div>
        <div className="myskillicons"><img src="images/icons/html.png"/><span className="caption">HTML</span></div>
        <div className="myskillicons"><img src="images/icons/css.png"/><span className="caption">CSS</span></div>
-       <div className="myskillicons"><img src="images/icons/wordpress.png"/><span className="caption">Wordpress</span></div>
-       <div className="myskillicons"><img src="images/icons/magento.png"/><span className="caption">Magento</span></div>
        <div className="myskillicons"><img src="images/icons/javascript.png"/><span className="caption">Javascript</span></div>             
+       <div className="myskillicons"><img src="images/icons/php.png"/><span className="caption">PHP</span></div>
        <div className="myskillicons"><img src="images/icons/responsive.png"/><span className="caption">RWD</span></div>
        <div className="myskillicons"><img src="images/icons/java.png"/><span className="caption">Java</span></div>             
        <div className="myskillicons"><img src="images/icons/sql.png"/><span className="caption">SQL</span></div>
-       <div className="myskillicons"><img src="images/icons/github.png"/><span className="caption">GitHub</span></div>             
+       <div className="myskillicons"><img src="images/icons/github.png"/><span className="caption">GitHub</span></div>          
        <div className="myskillicons"><img src="images/icons/aspx.png"/><span className="caption">ASP.Net</span></div>
        <div className="myskillicons"><img src="images/icons/vb.png"/><span className="caption">VB</span></div>
+       <div className="myskillicons"><img src="images/icons/wordpress.png"/><span className="caption">Wordpress</span></div>
+       <div className="myskillicons"><img src="images/icons/magento.png"/><span className="caption">Magento</span></div>
        <div className="myskillicons"><img src="images/icons/photoshop.png"/><span className="caption">Photoshop</span></div>
+       <div className="myskillicons"><img src="images/icons/jira.png"/><span className="caption">Jira</span></div>
+       <div className="myskillicons"><img src="images/icons/slack.png"/><span className="caption">Slack</span></div>
+       <div className="myskillicons"><img src="images/icons/jenkins.png"/><span className="caption">Jenkins</span></div>
+       <div className="myskillicons"><img src="images/icons/liquidplanner.png"/><span className="caption">Liquid Planner</span></div>
+       <div className="myskillicons"><img src="images/icons/terminal.png"/><span className="caption">Terminal</span></div>
+
      </section>
      )
   }
