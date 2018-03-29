@@ -553,6 +553,7 @@ input[type="radio"] + label:before {
 .image.avatar a:hover img,
 .image.avatar a img:hover {
   border-radius: 0;
+  cursor: pointer;
 }
 
 
