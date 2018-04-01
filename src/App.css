@@ -19,15 +19,14 @@ a {
   -o-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
   -ms-transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
   transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
-  border-bottom: dotted 1px;
-  color: #49bf9d;
+  color: #a2a2a2;
   text-decoration: none;
 }
 
 a:hover {
   border-bottom-color: transparent;
-  color: #ff9800 !important;
-  text-decoration: none;
+  border-bottom: dotted 1px;
+  opacity: 0.7;
 }
 .fa-github:hover{
   color: #4183c4 !important;
@@ -531,10 +530,33 @@ input[type="radio"] + label:before {
 .image.fit img {
   width: 100%;
 }
+@keyframes bounce {
+  0% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+  50% {
+   -moz-transform: translateY(-5px);
+   -ms-transform: translateY(-5px);
+   -webkit-transform: translateY(-5px);
+   transform: translateY(-5px);
+ }
+ 100% {
+    -moz-transform: translateY(0);
+    -ms-transform: translateY(0);
+    -webkit-transform: translateY(0);
+    transform: translateY(0px);
+  }
+}
 
 .image.avatar {
   border-radius: 100%;
   transition: border-radius 0.5s ease;
+  -moz-animation: bounce 2s infinite;
+  -webkit-animation: bounce 2s infinite;
+  animation: bounce 2s infinite;
 }
 
 .image.avatar:before {
@@ -552,7 +574,7 @@ input[type="radio"] + label:before {
 .image.avatar:hover img, 
 .image.avatar a:hover img,
 .image.avatar a img:hover {
-  border-radius: 0;
+  border-radius: 10%;
   cursor: pointer;
 }
 

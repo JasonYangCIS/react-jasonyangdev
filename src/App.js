@@ -69,7 +69,7 @@ class Header extends Component {
       <header id="header">
         <div className="image avatar"><a href onClick={() => this.handleClick()}><img src={"images/avatar.jpg"}how alt="" /></a></div>
         <h1>i am <strong>{"<"}Jason/{">"}</strong> motivated<br />
-          young software engineer, looking to learn, grow and experiment in all aspects of web development.</h1>
+           experienced software engineer, looking to learn, grow and experiment in all aspects of web development.</h1>
       </header>
      )
   }
@@ -130,13 +130,13 @@ class Experience extends Component {
             <h4>Ready Artwork</h4>
             <h5>July 2015 - Present | Web Developer</h5>
             <p className="experience">
-              <i className="fa fa-angle-right"></i> Developed numerous unique custom themes for WordPress and Magento.<br/>
+              <i className="fa fa-angle-right"></i> Developed pixel perfect responsive websites using PSDs given from designers and built on WordPress and Magento CMS platforms using HTML5, CSS3, PHP.<br/>
               <i className="fa fa-angle-right"></i> Worked with designers, project managers, sales and other developers to optimize research and development process.<br/>
               <i className="fa fa-angle-right"></i> Manage MySQL databases using PHPmyadmin.<br/>
               <i className="fa fa-angle-right"></i> Setup domain, hosting and deployed various websites via SSH, FTP and different cPanels.<br/>
               <i className="fa fa-angle-right"></i> Work with local, dev, staging and live environments.<br/>
               <i className="fa fa-angle-right"></i> Managed many different repositories and source code using Git, Source Tree, Bit Bucket and JIRA.<br/>
-              <i className="fa fa-angle-right"></i> Worked closely with Adobe’s HelpX team to rebuild their support pages under Scrum methodology using Sightly, JS, HTML, CSS and light Java. 
+              <i className="fa fa-angle-right"></i> Worked closely with Adobe’s HelpX team to rebuild their support pages under Scrum methodology using Sightly, JS, HTML, CSS and light Java.
             </p>
           </div>
 
@@ -187,6 +187,26 @@ class Facts extends Component {
   }
 }
 
+class FavoriteBuilds extends Component {
+  render() {
+    return(
+      <section id="favorite-builds">
+        <header className="major">
+          <h2>Favorite Website Builds</h2>
+          <ul className="favorite-builds-list">
+            <li><a href="https://helpx.adobe.com/photoshop/user-guide.html" target="_blank">https://helpx.adobe.com/photoshop/user-guide.html</a></li>
+            <li><a href="https://helpx.adobe.com/support/photoshop.html" target="_blank">https://helpx.adobe.com/support/photoshop.html</a></li>
+            <li><a href="https://www.laviewsecurity.com" target="_blank">https://www.laviewsecurity.com</a></li>
+            <li><a href="http://www.amp-tires.com/" target="_blank">http://www.amp-tires.com/</a></li>
+            <li><a href="https://www.shoeland.com/" target="_blank">https://www.shoeland.com/</a></li>
+          </ul> 
+        </header>
+        <p></p>
+      </section>
+    )
+  }
+}
+
 class Contact extends Component {
   render() {
     return(
@@ -230,6 +250,7 @@ class Body extends Component {
         <Skills/>
         <Experience/>
         <Facts/>
+        <FavoriteBuilds/>
         <Contact/>
       </div>
     )
