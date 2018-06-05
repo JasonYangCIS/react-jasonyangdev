@@ -199,9 +199,9 @@ class Facts extends Component {
         </header>           
 
         <div className="facts">
-          <i className="fa fa-cutlery"></i> Favorite Foods: Korean &amp; Italian <br/>               
-          <i className="fa fa-bicycle"></i> Hobbies: Road Biking <br/>
-          <i className="fa fa-coffee"></i> Loves: Coffee <br/>
+          <i className="fa fa-cutlery"></i> Favorite Foods: KBBQ, Pasta &amp; Sushi <br/>               
+          <i className="fa fa-bicycle"></i> Hobbies: Road Biking &amp; Aquascaping <br/>
+          <i className="fa fa-coffee"></i> Loves: Coffee &amp; Green Tea<br/>
           <i className="fa fa-bed"></i> Hates: Naps <br/>
         </div>
       </section>
