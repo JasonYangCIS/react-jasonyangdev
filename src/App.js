@@ -107,6 +107,8 @@ class Skills extends Component {
        <div className="myskillicons"><img src="images/icons/vb.png" alt="vb icon"/><span className="caption">VB</span></div>
        <div className="myskillicons"><img src="images/icons/wordpress.png" alt="wordpress icon"/><span className="caption">Wordpress</span></div>
        <div className="myskillicons"><img src="images/icons/magento.png" alt="magento icon"/><span className="caption">Magento</span></div>
+       <div className="myskillicons"><img src="images/icons/aem.png" alt="aem icon"/><span className="caption">AEM6.3</span></div>
+       <div className="myskillicons"><img src="images/icons/cq.png" alt="cq icon"/><span className="caption">CQ5</span></div>
        <div className="myskillicons"><img src="images/icons/photoshop.png" alt="photoshop icon"/><span className="caption">Photoshop</span></div>
        <div className="myskillicons"><img src="images/icons/jira.png" alt="jira icon"/><span className="caption">Jira</span></div>
        <div className="myskillicons"><img src="images/icons/slack.png" alt="slack icon"/><span className="caption">Slack</span></div>
@@ -130,19 +132,18 @@ class Experience extends Component {
             <h4>Ready Artwork</h4>
             <h5>July 2015 - Present | Web Developer</h5>
             <p className="experience">
-              <i className="fa fa-angle-right"></i> Developed numerous unique custom themes for WordPress and Magento.<br/>
+              <i className="fa fa-angle-right"></i> Developed pixel perfect responsive websites using PSDs given from designers and expedited the build on WordPress and Magento CMS platforms using HTML, SCSS, PHP, jQuery, AJAX, and JSON data.<br/>
               <i className="fa fa-angle-right"></i> Worked with designers, project managers, sales and other developers to optimize research and development process.<br/>
-              <i className="fa fa-angle-right"></i> Manage MySQL databases using PHPmyadmin.<br/>
-              <i className="fa fa-angle-right"></i> Setup domain, hosting and deployed various websites via SSH, FTP and different cPanels.<br/>
+              <i className="fa fa-angle-right"></i> Handled DevOps such as setup domain, hosting and deployed various websites via SSH, FTP and different cPanels.<br/>
+              <i className="fa fa-angle-right"></i> Managed many different repositories and source code using Git, Source Tree and Bit Bucket.<br/>
+              <i className="fa fa-angle-right"></i> Worked closely with Adobe’s HelpX team to rebuild their support pages under SCRUM methodology using Sightly, JS, AJAX, JSON, HTML, SASS and light Java.<br/>
               <i className="fa fa-angle-right"></i> Work with local, dev, staging and live environments.<br/>
-              <i className="fa fa-angle-right"></i> Managed many different repositories and source code using Git, Source Tree, Bit Bucket and JIRA.<br/>
-              <i className="fa fa-angle-right"></i> Worked closely with Adobe’s HelpX team to rebuild their support pages under Scrum methodology using Sightly, JS, HTML, CSS and light Java. 
             </p>
           </div>
 
           <div className="experience-card">
-            <h4>Cutlab Hair Studio</h4>
-            <h5>Jan 2015 - April 2015 | Freelance Developer</h5>
+            <h4>Freelance Developer</h4>
+            <h5>Jan 2015 - Present</h5>
             <p className="experience">
               <i className="fa fa-angle-right"></i> Completely redeveloped the website into a single page website aimed towards serving almost all information on homepage.<br/>
               <i className="fa fa-angle-right"></i> Redeveloped with responsive design.<br/>
