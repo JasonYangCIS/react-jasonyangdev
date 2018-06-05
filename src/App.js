@@ -161,7 +161,7 @@ class Experience extends Component {
               <span><a href="javascript:void(0);"><strong>www.jasonyangdev.com</strong></a> - 2017</span><br/>
               <i className="fa fa-angle-right"></i> Rebuilt my old web portfolio site into a website running off of React to gain more experience with this library.<br/>
               <i className="fa fa-angle-right"></i> Applied materialistic design philosophies and add some neat features (click on my face or refresh the page).<br/>
-              <i className="fa fa-angle-right"></i> Also used this as an opportunity to improve my DevOps experience by seting up NPM DPLOY to enhance efficiency and deployment of code changes.<br/>
+              <i className="fa fa-angle-right"></i> Also used this as an opportunity to dabble more into DevOps by seting up NPM DPLOY to enhance efficiency and deployment of code changes.<br/>
               <i className="fa fa-angle-right"></i> Built this portfolio using HTML, SCSS and React<br/>
               <br/>
 
