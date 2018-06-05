@@ -69,7 +69,7 @@ class Header extends Component {
       <header id="header">
         <div className="image avatar"><a href onClick={() => this.handleClick()}><img src={"images/avatar.jpg"}how alt="" /></a></div>
         <h1>i am <strong>{"<"}Jason/{">"}</strong> motivated<br />
-          young software engineer, looking to learn, grow and experiment in all aspects of web development.</h1>
+           experienced software engineer, looking to learn, grow and experiment in all aspects of web development.</h1>
       </header>
      )
   }
@@ -82,7 +82,7 @@ class Introduction extends Component {
         <header className="major">
           <h2>A little about myself</h2>
         </header>
-        <p>I graduated Cal Poly Pomona in 2015 chasing my dreams of excelling in my field of web development. After a web development course in college, I knew that this was the career that I had to pursue. My love for the web stems all the way down to the css, which really allows me to put my imagination and creativity to life (kind of).</p>
+        <p>I graduated Cal Poly Pomona in 2015 chasing my dreams of excelling in my field of web development. After a web development course in college, I knew that this was the career that I had to pursue. My love for the web stems all the way down to the css and the semi-colon, which really allows me to put my creativity and problem solving skills to life (kind of).</p>
       </section>
     )
   }
@@ -134,21 +134,42 @@ class Experience extends Component {
             <p className="experience">
               <i className="fa fa-angle-right"></i> Developed pixel perfect responsive websites using PSDs given from designers and expedited the build on WordPress and Magento CMS platforms using HTML, SCSS, PHP, jQuery, AJAX, and JSON data.<br/>
               <i className="fa fa-angle-right"></i> Worked with designers, project managers, sales and other developers to optimize research and development process.<br/>
-              <i className="fa fa-angle-right"></i> Handled DevOps such as setup domain, hosting and deployed various websites via SSH, FTP and different cPanels.<br/>
+              <i className="fa fa-angle-right"></i> Setup domain, hosting and deployed numerous websites using SSH, FTP and cPanel.<br/>
               <i className="fa fa-angle-right"></i> Managed many different repositories and source code using Git, Source Tree and Bit Bucket.<br/>
               <i className="fa fa-angle-right"></i> Worked closely with Adobe’s HelpX team to rebuild their support pages under SCRUM methodology using Sightly, JS, AJAX, JSON, HTML, SASS and light Java.<br/>
               <i className="fa fa-angle-right"></i> Work with local, dev, staging and live environments.<br/>
+              <i className="fa fa-angle-right"></i> Transformed over <u>50</u> custom different designs into fully responsive functional websites and launched them into production (too many to list).
             </p>
           </div>
 
           <div className="experience-card">
-            <h4>Freelance Developer</h4>
-            <h5>Jan 2015 - Present</h5>
+            <h4>Freelance</h4>
+            <h5>Jan 2015 - Present | Developer</h5>
             <p className="experience">
-              <i className="fa fa-angle-right"></i> Completely redeveloped the website into a single page website aimed towards serving almost all information on homepage.<br/>
-              <i className="fa fa-angle-right"></i> Redeveloped with responsive design.<br/>
-              <i className="fa fa-angle-right"></i> Responsible for all of the development of the site.<br/>
-              <i className="fa fa-angle-right"></i> Setup meetings with client and discussed content and ideas.
+              <span><a href="http://surf.live" target="_blank" rel="noopener noreferrer nofollow"><strong>surf.live</strong></a> - 2018</span><br/>
+              <i className="fa fa-angle-right"></i> Worked along side web designers and VP of engineering to deliver a website in an extremely tight deadline.<br/>
+              <i className="fa fa-angle-right"></i> Responsible for debugging, building different sections of the site as well as launching the site into production.<br/>
+              <i className="fa fa-angle-right"></i> Built as a codepen project using PUG(jade), SCSS and JS.<br/>
+              <br/>
+
+              <span><a href="http://www.jlsmartbets.com" target="_blank" rel="noopener noreferrer nofollow"><strong>www.jlsmartbets.com</strong></a> - 2018</span><br/>
+              <i className="fa fa-angle-right"></i> Leveraged WordPress and WooCommerce to build a custom site that has a shopping cart and handles restricting content via memberships.<br/>
+              <i className="fa fa-angle-right"></i> Worked closely with a designer and client to meet goals and expectations.<br/>
+              <i className="fa fa-angle-right"></i> Built as a custom wordpress theme using HTML, SCSS, PHP and jQuery<br/>
+              <br/>
+
+              <span><a href="javascript:void(0);"><strong>www.jasonyangdev.com</strong></a> - 2017</span><br/>
+              <i className="fa fa-angle-right"></i> Rebuilt my old web portfolio site into a website running off of React to gain more experience with this library.<br/>
+              <i className="fa fa-angle-right"></i> Applied materialistic design philosophies and add some neat features (click on my face or refresh the page).<br/>
+              <i className="fa fa-angle-right"></i> Built this portfolio using HTML, SCSS and React<br/>
+              <br/>
+
+              <span><a href="http://www.cutlabhairstudio.com" target="_blank" rel="noopener noreferrer nofollow"><strong>www.cutlabhairstudio.com</strong></a> - 2015</span><br/>
+              <i className="fa fa-angle-right"></i> Completely redeveloped the website into a response website aimed towards serving almost all information on homepage.<br/>
+              <i className="fa fa-angle-right"></i> Responsible for full of the development of the site along with design and content strategies.<br/>
+              <i className="fa fa-angle-right"></i> Built as a custom wordpress theme using HTML, SCSS, PHP and jQuery<br/>
+              <br/>
+
             </p>
           </div>
 
@@ -158,7 +179,7 @@ class Experience extends Component {
             <p className="experience"> 
               <i className="fa fa-angle-right"></i> Responsible for testing and quality assurance of all SpiritClips applications which includes xBox, Roku and various platforms of iOS and Android.<br/>
               <i className="fa fa-angle-right"></i> Managed source code with GitHub.<br/>
-              <i className="fa fa-angle-right"></i> Assisted in the development of Samsung TV.<br/>
+              <i className="fa fa-angle-right"></i> Assisted in the development of the android app for Samsung TV.<br/>
               <i className="fa fa-angle-right"></i> Assisted the content production department with updating the movie information.<br/>
               <i className="fa fa-angle-right"></i> Provided assistance with the analysis of competitive market research.
             </p>
@@ -183,6 +204,27 @@ class Facts extends Component {
           <i className="fa fa-coffee"></i> Loves: Coffee <br/>
           <i className="fa fa-bed"></i> Hates: Naps <br/>
         </div>
+      </section>
+    )
+  }
+}
+
+class FavoriteBuilds extends Component {
+  render() {
+    return(
+      <section id="favorite-builds">
+        <header className="major">
+          <h2>Favorite Website Projects</h2>
+          <ul className="favorite-builds-list">
+            <li><a href="https://helpx.adobe.com/photoshop/user-guide.html" target="_blank" rel="noopener noreferrer nofollow">helpx.adobe.com/photoshop/user-guide.html</a></li>
+            <li><a href="https://helpx.adobe.com/support/photoshop.html" target="_blank" rel="noopener noreferrer nofollow">helpx.adobe.com/support/photoshop.html</a></li>
+            <li><a href="https://www.laviewsecurity.com" target="_blank" rel="noopener noreferrer nofollow">www.laviewsecurity.com</a></li>
+            <li><a href="http://www.amp-tires.com/" target="_blank" rel="noopener noreferrer nofollow">www.amp-tires.com</a></li>
+            <li><a href="http://www.body-armor4x4.com/" target="_blank" rel="noopener noreferrer nofollow">www.body-armor4x4.com</a></li>
+            <li><a href="https://www.readyartwork.com/" target="_blank" rel="noopener noreferrer nofollow">www.readyartwork.com</a></li>
+          </ul> 
+        </header>
+        <p></p>
       </section>
     )
   }
@@ -231,6 +273,7 @@ class Body extends Component {
         <Skills/>
         <Experience/>
         <Facts/>
+        <FavoriteBuilds/>
         <Contact/>
       </div>
     )
