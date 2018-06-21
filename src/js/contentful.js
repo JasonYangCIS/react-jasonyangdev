@@ -10,24 +10,42 @@ const client = contentful.createClient({
   accessToken: ACCESS_TOKEN
 })
 
+function getSectionTitle (response) {
+  var sectionTitleNode = document.createElement('header');
+  sectionTitleNode.className = 'major';
+
+  var headerNode = document.createElement('h2');
+  var sectionTitleTextNode =  document.createTextNode(response.items[0].fields.sectionTitle);
+  headerNode.appendChild(sectionTitleTextNode);
+
+  sectionTitleNode.appendChild(headerNode);
+  return sectionTitleNode
+}
+
 const contentfulClass = {
-  mySkillsSectionBuilder() {
+
+  introductionBuilder() {
+    client.getEntries({content_type: 'introduction'})
+    .then(function(response) {
+      var introSection = document.getElementById('one');
+
+      introSection.appendChild(getSectionTitle(response));
+
+      var sectionContentNode = document.createElement('p');
+      var sectionContentText = document.createTextNode(response.items[0].fields.sectionContent);
+      sectionContentNode.appendChild(sectionContentText);
+
+      introSection.appendChild(sectionContentNode);
+    })
+  },
+
+  mySkillsBuilder() {
     client.getEntries({content_type: 'mySkillsSection'})
     .then(function(response) {
 
       var mySkillsSection = document.getElementById('three');
 
-      // Build out section title node
-      var sectionTitleNode = document.createElement('header');
-      sectionTitleNode.className = 'major';
-
-      var headerNode = document.createElement('h2');
-      var mySkillsTitle =  document.createTextNode(response.items[0].fields.sectionTitle);
-      headerNode.appendChild(mySkillsTitle);
-
-      sectionTitleNode.appendChild(headerNode);
-      
-      mySkillsSection.appendChild(sectionTitleNode);
+      mySkillsSection.appendChild(getSectionTitle(response));
 
       // Build out My Skills icons node
       var mySkillsIconArray = response.items[0].fields.mySkillsIcons;

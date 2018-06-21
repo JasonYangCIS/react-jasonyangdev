@@ -24,28 +24,26 @@ class Header extends Component {
 }
 
 class Introduction extends Component {
+  componentDidMount() {
+    contentful.introductionBuilder()
+  }
+
   render() {
     return(
-      <section id="one">
-        <header className="major">
-          <h2>A little about myself</h2>
-        </header>
-        <p>I graduated Cal Poly Pomona in 2015 chasing my dreams of excelling in my field of web development. After a web development course in college, I knew that this was the career that I had to pursue. My love for the web stems all the way down to the css and the semi-colon, which really allows me to put my creativity and problem solving skills to life (kind of).</p>
-      </section>
+      <section id="one"></section>
     )
   }
 }
 
 class Skills extends Component {
 
-  async componentDidMount() {
-    contentful.mySkillsSectionBuilder()
+  componentDidMount() {
+    contentful.mySkillsBuilder()
   }
 
   render() {
     return(
-     <section id="three">
-     </section>
+     <section id="three"></section>
     )
   }
 }
