@@ -1,3 +1,5 @@
+import marked from 'marked';
+
 const contentful = require('contentful')
 
 const SPACE_ID = 'w2rt9s1mwjcs'
@@ -22,7 +24,29 @@ function getSectionTitle (response) {
   return sectionTitleNode
 }
 
+function getSectionContent (response) {
+  var template = document.createElement('template');
+  var sectionContentText = marked(response.items[0].fields.sectionContent).trim();
+  template.innerHTML = sectionContentText;
+  return template.content.firstChild;
+}
+
 const contentfulClass = {
+  
+  headerBuilder() {
+    client.getEntries({content_type: 'header'})
+    .then(function(response) {
+      var headerSection = document.getElementById('header');
+      var logoUrl = response.items[0].fields.logo.fields.file.url;
+      var imageURL = 'https:' + logoUrl + '?fm=jpg&fl=progressive';
+      var imageFile = document.createElement('img');
+      imageFile.src = imageURL;
+      var imageContainingEle = document.querySelector("#header .image.avatar a");
+
+      imageContainingEle.appendChild(imageFile);
+      headerSection.appendChild(getSectionContent(response));
+    })
+  },
 
   introductionBuilder() {
     client.getEntries({content_type: 'introduction'})
@@ -30,12 +54,7 @@ const contentfulClass = {
       var introSection = document.getElementById('one');
 
       introSection.appendChild(getSectionTitle(response));
-
-      var sectionContentNode = document.createElement('p');
-      var sectionContentText = document.createTextNode(response.items[0].fields.sectionContent);
-      sectionContentNode.appendChild(sectionContentText);
-
-      introSection.appendChild(sectionContentNode);
+      introSection.appendChild(getSectionContent(response));
     })
   },
 

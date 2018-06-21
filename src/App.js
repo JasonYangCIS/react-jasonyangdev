@@ -12,18 +12,21 @@ class Header extends Component {
     };
   }
 
+  componentDidMount() {
+    contentful.headerBuilder()
+  }
+
   render() {
     return(
       <header id="header">
-        <div className="image avatar"><a href onClick={() => main.handleClick()}><img src={"images/avatar.jpg"} alt="" /></a></div>
-        <h1>i am <strong>{"<"}Jason/{">"}</strong> motivated<br />
-           experienced software engineer, looking to learn, grow and experiment in all aspects of web development.</h1>
+        <div className="image avatar"><a href onClick={() => main.handleClick()}></a></div>
       </header>
      )
   }
 }
 
 class Introduction extends Component {
+
   componentDidMount() {
     contentful.introductionBuilder()
   }
