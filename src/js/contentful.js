@@ -91,7 +91,16 @@ const contentfulClass = {
       });
     })
     .catch(console.error)
+  },
+
+  experienceBuilder() {
+    client.getEntries({content_type: 'experience'})
+    .then(function(response) {
+      var experienceSection = document.getElementById('four');
+      console.log(response);
+    })
   }
+  
 }
 
 export { contentfulClass as default } 

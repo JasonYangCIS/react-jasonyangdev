@@ -52,6 +52,10 @@ class Skills extends Component {
 }
 
 class Experience extends Component {
+  componentDidMount() {
+    contentful.experienceBuilder()
+  }
+
   render() {
     return(
        <section id="four">
