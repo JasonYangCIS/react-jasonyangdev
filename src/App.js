@@ -64,20 +64,13 @@ class Experience extends Component {
 }
 
 class Facts extends Component {
+  componentDidMount() {
+    contentful.factsBuilder()
+  }
+
   render() {
     return (
-      <section id="five">
-        <header className="major">
-          <h2>Facts</h2>
-        </header>           
-
-        <div className="facts">
-          <i className="fa fa-cutlery"></i> Favorite Foods: KBBQ, Pasta &amp; Sushi <br/>               
-          <i className="fa fa-bicycle"></i> Hobbies: Road Biking &amp; Aquascaping <br/>
-          <i className="fa fa-coffee"></i> Loves: Coffee &amp; Green Tea<br/>
-          <i className="fa fa-bed"></i> Hates: Naps <br/>
-        </div>
-      </section>
+      <section id="five"></section>
     )
   }
 }

@@ -129,6 +129,16 @@ const contentfulClass = {
         experienceSection.appendChild(experienceCardEle);
       });
     })
+  },
+  
+  factsBuilder() {
+    client.getEntries({content_type: 'facts'})
+    .then(function(response) {
+      var factsSection = document.getElementById('five');
+
+      factsSection.appendChild(getSectionTitle(response));
+      factsSection.appendChild(getSectionContent(response));
+    })
   }
 
 }
