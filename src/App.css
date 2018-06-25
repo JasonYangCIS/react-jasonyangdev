@@ -775,7 +775,7 @@ dl {
 /* Header */
 
 #header {
-  background-color: #ff9800;
+  background-color: #ddd;
   background-attachment: scroll,                fixed;
   /* background-image: url("images/overlay.png"), url("../images/bwalley.jpg"); */
   background-position: top left,              top left;
@@ -816,7 +816,7 @@ dl {
 /* Footer */
 
 #footer {
-  background-color: #ff9800;
+  background-color: #ddd;
   bottom: 0;
   left: 0;
   padding: 0 4em 2em 0;
@@ -869,7 +869,7 @@ dl {
 }
 
 #main > section {
-  border-top: solid 2px #ffc947;
+  border-top: solid 2px #dddddd;
   margin: 2em 0 2em 0;
   padding: 4em 0 0 0;
 }
@@ -934,7 +934,7 @@ section#three header {
   padding: 5px 0;
   border-radius: 0 0 5px 5px;
   color: #ffffff;
-  background-color: #ff9800;
+  background-color: #ddd;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -961,7 +961,7 @@ p.experience{
 .experience-card h5 {
   margin-bottom: 5px;
   padding-bottom: 5px;
-  border-bottom: 2px solid rgba(255, 152, 0, 0.3);
+  border-bottom: 2px solid rgba(211, 211, 211, 0.3);
 }
 
 section#six a {
@@ -969,7 +969,7 @@ section#six a {
 }
 
 section#six a::hover {
-  color: #ff9800 !important;
+  color: #ddd !important;
 }
 
 section#one {

@@ -4,9 +4,13 @@ const mainClass = {
     var colorArr = [
       "255, 152, 0",    //Orange
       "102, 187, 106",  //Green
+      "100, 124, 100",  //Army
       "176, 190, 197",  //Silver
       "255, 138, 128",  //Pink
       "100, 181, 246",  //Blue
+      "52, 152, 219",   //Blue (Peterriver)
+      "44, 62, 80",     //Midnight Blue
+      "26, 188, 156",   //Turquoise
       "154, 0, 7",      //Burgundy
       "244, 67, 54",    //Red
       "0, 188, 212",    //Teal

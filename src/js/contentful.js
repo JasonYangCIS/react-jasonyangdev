@@ -139,6 +139,35 @@ const contentfulClass = {
       factsSection.appendChild(getSectionTitle(response));
       factsSection.appendChild(getSectionContent(response));
     })
+  },
+
+  favoriteSitesBuilder() {
+    client.getEntries({content_type: 'favoriteWebsiteProjects'})
+    .then(function(response) {
+      var favoritesSection = document.getElementById('favorite-builds');
+
+      favoritesSection.appendChild(getSectionTitle(response));
+      favoritesSection.appendChild(getSectionContent(response));
+    })
+  },
+
+  contactBuilder() {
+    client.getEntries({content_type: 'contact'})
+    .then(function(response) {
+      var contactSection = document.getElementById('six');
+
+      contactSection.appendChild(getSectionTitle(response));
+      contactSection.appendChild(getSectionContent(response));
+    })
+  },
+
+  footerBuilder() {
+    client.getEntries({content_type: 'footer'})
+    .then(function(response) {
+      var footerSection = document.getElementById('footer');
+ 
+      footerSection.appendChild(getSectionContent(response));
+    })
   }
 
 }
