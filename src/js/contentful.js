@@ -97,10 +97,40 @@ const contentfulClass = {
     client.getEntries({content_type: 'experience'})
     .then(function(response) {
       var experienceSection = document.getElementById('four');
-      console.log(response);
+      
+      experienceSection.appendChild(getSectionTitle(response));
+
+      var experienceArray = response.items[0].fields.experience;
+      experienceArray.forEach(function (asset) {
+
+        var experienceCardEle = document.createElement('div');
+        experienceCardEle.className = 'experience-card';
+        var companyNameEle = document.createElement('h4');
+        var datePositionEle = document.createElement('h5');
+        
+        var companyName = asset.fields['company'];
+        var datePosition =  asset.fields['datePosition'];
+        var sectionContentText = marked(asset.fields['sectionContent']).trim();
+
+        var template = document.createElement('template');
+
+        template.innerHTML = companyName;
+        companyNameEle.appendChild(template.content.firstChild);
+        
+        template.innerHTML = datePosition;
+        datePositionEle.appendChild(template.content.firstChild);
+
+        template.innerHTML = sectionContentText;
+
+        experienceCardEle.appendChild(companyNameEle);
+        experienceCardEle.appendChild(datePositionEle);
+        experienceCardEle.appendChild(template.content.firstChild);
+
+        experienceSection.appendChild(experienceCardEle);
+      });
     })
   }
-  
+
 }
 
 export { contentfulClass as default } 
