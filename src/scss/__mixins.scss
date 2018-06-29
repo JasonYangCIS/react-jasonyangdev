@@ -1,0 +1,54 @@
+@mixin transition ($args...) {
+	-webkit-transition: $args;
+	-o-transition: $args;
+	-moz-transition: $args;
+	transition: $args;
+}
+
+@mixin appearance ($value) {
+	-moz-appearance: $value;
+	-webkit-appearance: $value;
+	-o-appearance: $value;
+	-ms-appearance: $value;
+	appearance: $value;
+}
+
+@mixin animation($args...) {
+	-moz-animation: $args;
+	-webkit-animation: $args;
+	animation: $args;
+}
+
+@mixin display-flex() {
+    display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flex;         /* IE 11 */
+    display: -ms-flexbox;      /* IE10 uses -ms-flexbox */
+    display: -webkit-flex;     /* NEW - Chrome */
+    display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+ }
+
+ @mixin flex-wrap($wrap){
+ -webkit-flex-wrap: $wrap; /* Safari 6.1+ */
+ -ms-flex-wrap: $wrap;
+ flex-wrap: $wrap;
+}
+
+@mixin justify-content ($position) {
+  -webkit-justify-content: $position;
+  -ms-justify-content: $position;
+  justify-content: $position;
+}
+
+@mixin align-items ($position) {
+  -webkit-align-items: $position;
+  -ms-align-items: $position;
+  align-items: $position;
+}
+
+@mixin transform($args...){
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -o-transform: $args;
+    transform: $args;
+}

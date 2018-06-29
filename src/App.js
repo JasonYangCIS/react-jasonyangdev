@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import './css/App.css';
 import main from './js/main'
 import contentful from './js/contentful'
 
@@ -131,7 +131,9 @@ class App extends Component {
     window.addEventListener('load', this.handleLoad);
  }
  handleLoad() {
-    main.handleClick();
+    setTimeout(function() {
+      main.handleClick(); 
+    }, 150);
  }
   render() {
     return (
