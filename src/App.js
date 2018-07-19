@@ -126,6 +126,18 @@ class Body extends Component {
   }
 }
 
+class Loader extends Component {
+  render () {
+    return (
+      <div id="loading-container">
+        <div className="loading-icon">
+          <div className="animated-box"></div>
+        </div>
+      </div>
+    )
+  }
+}
+
 class App extends Component {
   componentDidMount() {
     window.addEventListener('load', this.handleLoad);
@@ -133,11 +145,14 @@ class App extends Component {
  handleLoad() {
     setTimeout(function() {
       main.handleClick(); 
-    }, 150);
+      var elem = document.getElementById("loading-container");
+      elem.classList.add("hidden");
+    }, 1000);
  }
   render() {
     return (
       <body id="top" primary-color-id="">
+        <Loader/>
         <Header/>
         <Body/>
         <Footer/>

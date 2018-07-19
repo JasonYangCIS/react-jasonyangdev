@@ -18,3 +18,51 @@
     transform: translateY(0px);
   }
 }
+
+// loading icons
+@keyframes loading {
+  17% {
+    border-bottom-right-radius: 3px;
+  }
+  25% {
+    @include transform(translateY(9px) rotate(22.5deg));
+  }
+  50% {
+    @include transform(translateY(18px) scale(1, .9) rotate(45deg));
+    border-bottom-right-radius: 40px;
+  }
+  75% {
+    @include transform(translateY(9px) rotate(67.5deg));
+  }
+  100% {
+    @include transform(translateY(0) rotate(90deg));
+  }
+}
+
+
+@keyframes shadow {
+  0%, 100% {
+    @include transform(scale(1, 1));
+  }
+  50% {
+    @include transform(scale(1.2, 1));
+  }
+}
+
+@keyframes rotateColors {
+  0% {
+    background: $teal;
+  }
+  25% {
+    background: $orange;
+  }
+  50% {
+    background: $purple;
+  }
+  75% {
+    background: $green;
+  }
+  100% {
+    background: $blue;
+  }
+}

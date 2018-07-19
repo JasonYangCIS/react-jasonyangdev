@@ -1,0 +1,51 @@
+#loading-container {
+  background: $white;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  height: 100%;
+  width: 100%;
+  z-index: 1;
+  opacity: 1;
+  overflow: hidden;
+  @include transition(all 0.5s ease);
+  &.hidden {
+    opacity: 0;
+  }
+  .loading-icon {  
+    width: 50px;
+    height: 50px;
+    margin: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    &:before {
+      content: '';
+      width: 50px;
+      height: 5px;
+      background: $black;
+      opacity: 0.1;
+      position: absolute;
+      top: 59px;
+      left: 0;
+      border-radius: 50%;
+      @include animation(shadow .5s linear infinite);
+    }
+    .animated-box {
+      content: '';
+      width: 50px;
+      height: 50px;
+      // @include animation(rotateColors 1s linear infinite);
+      @include animation(loading 0.75s linear infinite, rotateColors 2s linear infinite);
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 3px;
+    }
+  }
+}
