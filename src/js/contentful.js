@@ -150,6 +150,15 @@ const contentfulClass = {
       favoritesSection.appendChild(getSectionContent(response));
     })
   },
+  
+  codeSnippetsBuilder() {
+    client.getEntries({content_type: 'codeSnippets'})
+    .then(function(response) {
+      var contactSection = document.getElementById('code-snippets');
+
+      contactSection.prepend(getSectionTitle(response));
+    })
+  },
 
   contactBuilder() {
     client.getEntries({content_type: 'contact'})

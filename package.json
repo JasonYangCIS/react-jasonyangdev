@@ -7,13 +7,14 @@
     "ajv": "^6.5.1",
     "cli-table2": "^0.2.0",
     "contentful": "^6.1.1",
-    "react": "^16.0.0",
     "marked": "^0.4.0",
-    "react-dom": "^16.0.0",
-    "react-scripts": "^1.1.4",
     "node-sass": "^4.5.0",
     "npm-run-all": "^4.1.2",
-    "onchange": "^3.2.1"
+    "onchange": "^3.2.1",
+    "open-weather-icons": "0.0.7",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "^1.1.4"
   },
   "scripts": {
     "scss": "node-sass -r --output-style compressed -o src/css src/scss",
