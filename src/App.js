@@ -113,7 +113,7 @@ class CodeSnippets extends Component {
             let date = new Date(value.dt*1000);
             let year = date.getFullYear();
 
-            let dayNum = date.getDate()+1;
+            let dayNum = date.getDate();
             let weekday = new Array(7);
             weekday[0] = "Sun";
             weekday[1] = "Mon";
@@ -172,7 +172,7 @@ class CodeSnippets extends Component {
           
           <div label="LA Weather">
             <div id="weather-container">
-            <h5>{city}</h5>
+            <h5>Weather for: {city}</h5>
             <ul dangerouslySetInnerHTML={createMarkup()} />
             </div>
           </div>
