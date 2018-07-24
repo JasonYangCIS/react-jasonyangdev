@@ -54,6 +54,14 @@ const mainClass = {
     for (i = 0; i < el.length; i++) {
       el[i].setAttribute("style", setStyle);
     }
+
+    /* border color for tabs */
+    setStyle = "border-color: rgba(" + randomColor + ", 0.5 )";
+    el = document.querySelectorAll(".tabs .tab-list .tab-list-item");
+    for (i = 0; i < el.length; i++) {
+      el[i].setAttribute("style", setStyle);
+    }
+
   }
 
 }

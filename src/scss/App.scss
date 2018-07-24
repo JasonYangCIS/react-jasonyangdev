@@ -499,13 +499,33 @@ footer#footer{
   display: none !important;
 }
 
-#weather-container {
+#code-snippets {
   h5 {
     width: 100%;
     text-align: center;
     display: inline-block;
     margin-bottom: 20px;
   }
+  .tab-list {
+    list-style: none;
+    padding: 0;
+    li {
+      display: inline-block;
+      padding: 5px 10px;
+      border-bottom: 0px solid $white;
+      @include transition(all 0.3s ease);
+      margin: 0 5px;
+      &:hover {
+        cursor: pointer;
+      }
+      &.tab-list-active, &:hover {
+        border-bottom: 2px solid rgba($teal, 0.5 )
+      }
+    }
+  }
+}
+
+#weather-container {
   ul {
     list-style: none;
     padding: 0;

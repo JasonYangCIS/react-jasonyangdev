@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './css/App.css';
 import main from './js/main'
 import contentful from './js/contentful'
+import Tabs from './js/tabs';
 
 class Header extends Component {
     constructor() {
@@ -91,14 +92,14 @@ class CodeSnippets extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      // error: null,
-      // isLoaded: false,
-      // items: []
+      city: '',
+      weatherBuilder: ''
     };
   }
 
   componentDidMount() {
-    contentful.codeSnippetsBuilder()
+    contentful.codeSnippetsBuilder();
+
     fetch('https://api.openweathermap.org/data/2.5/forecast?id=5368381&appid=fdabb40eee7faa4f603ded0bc6f0fcbd')
     .then(res => res.json())
     .then(
@@ -151,7 +152,10 @@ class CodeSnippets extends Component {
         
       },
       (error) => {
-        console.log('Error in weather API' + error);
+        this.setState({
+          city: 'API out of memory.',
+          weatherBuilder: 'Error in weather API' + error
+        })
       }
     )
   }
@@ -163,10 +167,24 @@ class CodeSnippets extends Component {
 
     return (
       <section id="code-snippets">
-        <div id="weather-container">
-          <h5 className="location">{city}</h5>
-          <ul dangerouslySetInnerHTML={createMarkup()} />
-        </div>
+       <div>
+         <Tabs>
+          
+          <div label="LA Weather">
+            <div id="weather-container">
+            <h5>{city}</h5>
+            <ul dangerouslySetInnerHTML={createMarkup()} />
+            </div>
+          </div>
+
+          <div label="Movies">
+            <h5>Movies</h5>
+            Coming soon...
+          </div>
+
+        </Tabs>
+      </div>
+        
       </section>
     );
   }
