@@ -3,6 +3,8 @@ import './css/App.css';
 import main from './js/main'
 import contentful from './js/contentful'
 import Tabs from './js/tabs';
+import Movies from './js/movies';
+import Weather from './js/weather';
 
 class Header extends Component {
     constructor() {
@@ -89,82 +91,12 @@ class FavoriteBuilds extends Component {
 }
 
 class CodeSnippets extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      city: '',
-      weatherBuilder: ''
-    };
-  }
 
   componentDidMount() {
     contentful.codeSnippetsBuilder();
-
-    fetch('https://api.openweathermap.org/data/2.5/forecast?id=5368381&appid=fdabb40eee7faa4f603ded0bc6f0fcbd')
-    .then(res => res.json())
-    .then(
-      (result) => {
-        var weatherBuilder = '';
-        let counter = 1;
-        result.list.forEach(function(value, index) {
-          if ( ( (index + 1) % 8 === 0 || index === 0) && counter <= 5 ) {
-            counter++;
-            // Date
-            let date = new Date(value.dt*1000);
-            let year = date.getFullYear();
-
-            let dayNum = date.getDate();
-            let weekday = new Array(7);
-            weekday[0] = "Sun";
-            weekday[1] = "Mon";
-            weekday[2] = "Tues";
-            weekday[3] = "Wed";
-            weekday[4] = "Thurs";
-            weekday[5] = "Fri";
-            weekday[6] = "Sat";
-            let day = weekday[date.getDay()];
-
-            var month = date.getMonth()+1;
-
-            // Kelvin to Fahrenheit
-            let temperature = Math.ceil(value.main.temp * 9/5 - 459.67);
-
-            // Weather
-            let description = value.weather[0].description;
-            let icon = value.weather[0].icon;
-            let iconUrl = 'https://openweathermap.org/img/w/' + icon + '.png';
-            
-            weatherBuilder += '<li>' +
-                                '<i class="owi owi-' + icon + '"></i>' +
-                                '<span class="degrees">' + temperature + '°F </span>' +
-                                '<span class="day">' + day + '</span>' +
-                                '<span class="date">' + month + '/' + dayNum + '/' + year + '</span>' +
-                                '<span class="weather-description">' +  description + '</span>' +
-                              '</li>';
-          }
-        })
-
-        this.setState({
-          city: result.city.name,
-          weatherBuilder: weatherBuilder
-        })
-
-        
-      },
-      (error) => {
-        this.setState({
-          city: 'API out of memory.',
-          weatherBuilder: 'Error in weather API' + error
-        })
-      }
-    )
   }
 
   render() {
-
-    const { weatherBuilder, city } = this.state;
-    function createMarkup() { return {__html: weatherBuilder}; };
-
     return (
       <section id="code-snippets">
        <div>
@@ -172,14 +104,14 @@ class CodeSnippets extends Component {
           
           <div label="LA Weather">
             <div id="weather-container">
-            <h5>Weather for: {city}</h5>
-            <ul dangerouslySetInnerHTML={createMarkup()} />
+              <Weather/>
             </div>
           </div>
 
           <div label="Movies">
-            <h5>Movies</h5>
-            Coming soon...
+            <div id="movies-container">
+              <Movies/>
+            </div>
           </div>
 
         </Tabs>

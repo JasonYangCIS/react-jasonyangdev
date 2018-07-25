@@ -5,6 +5,8 @@
 @import '__mixins.scss';
 @import '__animations.scss';
 @import '_loading.scss';
+@import '_weather.scss';
+@import '_movies.scss';
 body {
   background: $white;
 }
@@ -525,43 +527,6 @@ footer#footer{
   }
 }
 
-#weather-container {
-  ul {
-    list-style: none;
-    padding: 0;
-    @include display-flex();
-    @include justify-content(center);
-    @include flex-wrap(wrap);
-    li {
-      padding: 15px 5px;
-      margin: 0 5px 40px 5px;
-      width: calc(20% - 20px);
-      display: inline-block;
-      box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
-      i {
-        font-size: 35px;
-        line-height: 37px;
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-      }
-      span {
-        width: 100%;
-        display: inline-block;
-        text-align: center;
-      }
-    }
-  }
-}
-@media screen and (max-width: 1023px) {
-  #weather-container {
-    ul {
-      li {
-        width: calc(50% - 20px);
-      }
-    }
-  }
-}
 
 @media screen and (max-width: 768px) {
   #header {
