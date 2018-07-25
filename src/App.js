@@ -101,14 +101,13 @@ class CodeSnippets extends Component {
       <section id="code-snippets">
        <div>
          <Tabs>
-          
           <div label="LA Weather">
             <div id="weather-container">
               <Weather/>
             </div>
           </div>
 
-          <div label="Movies">
+          <div label="Movies Component">
             <div id="movies-container">
               <Movies/>
             </div>

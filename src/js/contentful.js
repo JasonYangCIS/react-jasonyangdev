@@ -156,6 +156,7 @@ const contentfulClass = {
     .then(function(response) {
       var contactSection = document.getElementById('code-snippets');
 
+      contactSection.prepend(getSectionContent(response));
       contactSection.prepend(getSectionTitle(response));
     })
   },
