@@ -23,7 +23,6 @@ class Movies extends Component {
 
           let htmlBuilder = '';
           result.results.forEach(function(value, index) {
-            console.log(value);
             let movieRating = value.vote_average;
             let movieTitle = value.title;
             let movieImg = value.poster_path;

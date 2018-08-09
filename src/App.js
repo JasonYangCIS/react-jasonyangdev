@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import main from './js/main'
-import contentful from './js/contentful'
-import Tabs from './js/tabs';
-import Movies from './js/movies';
-import Weather from './js/weather';
+import main       from './js/main'
+import contentful from './js/components/contentful'
+import Tabs       from './js/components/tabs';
+import Movies     from './js/components/movies';
+import Weather    from './js/components/weather';
+import Giphy      from './js/components/giphy';
 
 class Header extends Component {
     constructor() {
@@ -110,6 +111,12 @@ class CodeSnippets extends Component {
           <div label="Movies Component">
             <div id="movies-container">
               <Movies/>
+            </div>
+          </div>
+
+          <div label="Giphy Component">
+            <div id="giphy-container">
+              <Giphy/>
             </div>
           </div>
 
