@@ -37,15 +37,14 @@ class GiphySearchbar extends Component {
       (result) => {
 
         this.setState({
-          giphyBuilder: giphyBuilder,
           resultsData: result.data,
           loading: false
         })
 
       },
       (error) => {
+        alert('Error in Giphy API');
         this.setState({
-          giphyBuilder: 'Error in giphy API' + error,
           loading: false
         })
       }
@@ -70,8 +69,7 @@ class Giphy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      giphyBuilder: '',
-      'keyword': 'Hi',
+      keyword: 'Hi',
       loading: true
     };
   }
@@ -93,6 +91,8 @@ class Giphy extends Component {
     return (
       <div>
         <GiphySearchbar firstinput={this.props.keyword} onKeywordChange={this.handleKeywordChange.bind(this)} />
+        <ul id="giphy-list">
+        </ul>
       </div>
     );
   }
@@ -112,18 +112,15 @@ export default Giphy;
   //   .then(res => res.json())
   //   .then(
   //     (result) => {
-  //       var giphyBuilder = '';
   //       console.log(result);
 
   //       this.setState({
-  //         giphyBuilder: giphyBuilder,
   //         loading: false
   //       })
 
   //     },
   //     (error) => {
   //       this.setState({
-  //         giphyBuilder: 'Error in weather API' + error,
   //         loading: false
   //       })
   //     }
