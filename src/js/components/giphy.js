@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Loading from './loading';
 
 class GiphySearchbar extends Component {
   
@@ -80,13 +81,17 @@ class Gifs extends Component {
 
   render () {
     let images = [];
+
     if ( this.state.hasGiphyResults && this.state.giphyList.length > 0 ) {
       this.state.giphyList.forEach(function(item){
         let key = item.id.toString(),
         src = item.images.fixed_width.url,
+        height = item.images.fixed_width.height,
+        width = item.images.fixed_width.width,
         title = item.title;
+        console.log(item);
 
-        images.push(<li><img key={key} src={src} alt={title}/></li>);
+        images.push(<li key={key}><img src={src} alt={title} height={height} width={width}/></li>);
       });
       return(
         <div>
