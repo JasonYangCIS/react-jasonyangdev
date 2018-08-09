@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Loading from './loading';
 
 class GiphySearchbar extends Component {
   
@@ -28,27 +27,6 @@ class GiphySearchbar extends Component {
 
   handleChange() {
     this.props.onKeywordChange(this.searchKeyword.value);
-    let searchTerm = this.searchKeyword.value;
-    let giphyApi = 'http://api.giphy.com/v1/gifs/search?q=' + searchTerm + '&api_key=pH4317HZgmQsVE6tFSkfH8pdXIG13lAC&limit=4';
-
-    fetch(giphyApi)
-    .then(res => res.json())
-    .then(
-      (result) => {
-
-        this.setState({
-          resultsData: result.data,
-          loading: false
-        })
-
-      },
-      (error) => {
-        alert('Error in Giphy API');
-        this.setState({
-          loading: false
-        })
-      }
-    )
   }
 
   render() {
@@ -65,12 +43,80 @@ class GiphySearchbar extends Component {
   }
 }
 
+class Gifs extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      giphyList: '',
+      hasGiphyResults: false
+    };
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.keyword !== prevProps.keyword) {
+      let keyword = this.props.keyword;
+      let giphyApi = 'https://api.giphy.com/v1/gifs/search?q=' + keyword + '&api_key=pH4317HZgmQsVE6tFSkfH8pdXIG13lAC&limit=6';
+      fetch(giphyApi)
+      .then(res => res.json())
+      .then(
+        (result) => {
+          this.setState({
+            giphyList: result.data,
+            hasGiphyResults: true
+          });
+        },
+        (error) => {
+          console.log('Error in Giphy API');
+          this.setState({
+            giphyList: 'Error in Giphy API',
+            hasGiphyResults: false
+          });
+        }
+      )
+    }
+  }
+
+  render () {
+    let images = [];
+    if ( this.state.hasGiphyResults && this.state.giphyList.length > 0 ) {
+      this.state.giphyList.forEach(function(item){
+        let key = item.id.toString(),
+        src = item.images.fixed_width.url,
+        title = item.title;
+
+        images.push(<li><img key={key} src={src} alt={title}/></li>);
+      });
+      return(
+        <div>
+          <ul id="giphy-list">
+            {images}
+          </ul>
+        </div>
+      )
+    } else if( this.props.keyword === 'Enter search term.' || this.state.giphyList.length === 0) {
+     return (
+      <div>
+        <p>Enter search term.</p>
+      </div>
+      )
+    } else {
+      return (
+        <div>
+          <p>Sorry, no results.</p>
+        </div>
+      )
+    }
+  }
+}
+
 class Giphy extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      keyword: 'Hi',
-      loading: true
+      loading: true,
+      keyword: 'Enter search term.'
     };
   }
 
@@ -81,48 +127,13 @@ class Giphy extends Component {
   }
   
   render() {
-    const { loading, keyword} = this.state;
-    // if(loading) {
-    //   return (
-    //     <Loading/>
-    //     )
-    // }
-    
     return (
       <div>
-        <GiphySearchbar firstinput={this.props.keyword} onKeywordChange={this.handleKeywordChange.bind(this)} />
-        <ul id="giphy-list">
-        </ul>
+        <GiphySearchbar onKeywordChange={this.handleKeywordChange.bind(this)} />
+        <Gifs keyword={this.state.keyword} />
       </div>
     );
   }
 }
 
 export default Giphy;
-
-
-//http://api.giphy.com/v1/gifs/search?q=ryan+gosling&api_key=pH4317HZgmQsVE6tFSkfH8pdXIG13lAC&limit=5
-
-  // componentDidMount() {
-    // let giphyApi = '//api.giphy.com/v1/gifs/search?api_key=pH4317HZgmQsVE6tFSkfH8pdXIG13lAC&limit=1&q=';
-  //   let searchTerm = 'ryan gosling'
-  //   let giphyApi = 'http://api.giphy.com/v1/gifs/search?q=' + searchTerm + '&api_key=pH4317HZgmQsVE6tFSkfH8pdXIG13lAC&limit=1';
-
-  //   fetch(giphyApi)
-  //   .then(res => res.json())
-  //   .then(
-  //     (result) => {
-  //       console.log(result);
-
-  //       this.setState({
-  //         loading: false
-  //       })
-
-  //     },
-  //     (error) => {
-  //       this.setState({
-  //         loading: false
-  //       })
-  //     }
-  //   )
-  // }

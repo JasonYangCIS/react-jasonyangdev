@@ -4,13 +4,16 @@
 @import '__legend.scss';
 @import '__mixins.scss';
 @import '__animations.scss';
-@import '_loading.scss';
-@import '_weather.scss';
-@import '_movies.scss';
+@import './components/_loading.scss';
+@import './components/_weather.scss';
+@import './components/_movies.scss';
+@import './components/_giphy.scss';
 body {
   background: $white;
 }
- 
+ * {
+  box-sizing: border-box;
+ }
 body, input, select, textarea {
   color: $mdgrey;
   font-family: 'Roboto Mono', monospace, "Source Sans Pro", Helvetica, sans-serif;
@@ -307,7 +310,7 @@ ul.icons {
   position: fixed;
   text-align: right;
   top: 0;
-  width: calc(30% - 4em);
+  width: 35%;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   h1 {
     color: rgba(255, 255, 255, 0.5);
@@ -334,7 +337,7 @@ ul.icons {
   padding: 0 4em 2em 0;
   position: fixed;
   text-align: right;
-  width: 30%;
+  width: 35%;
   .icons {
     margin: 1em 0 0 0;
     a {
@@ -368,9 +371,9 @@ ul.icons {
 /* Main */
 #main {
   padding: 2em 4em 2em 4em;
-  width: calc(100% - 30% - 12em);
-  margin-left: calc(30% + 4em);
-  max-width: 650px;
+  width: calc(100% - 35%);
+  margin-left: 35%;
+  max-width: 800px;
   > section {
     border-top: solid 2px $ltgrey;
     margin: 2em 0 2em 0;
@@ -535,16 +538,16 @@ footer#footer{
     padding: 2em 0;
     position: relative;
     text-align: center;
-    width: calc(100% - 0em);
+    width: 100%;
   }
   #footer {
     position: relative;
-    width: calc(100% - 3em);
+    width: 100%;
     padding: 2.25em 1.5em;
     text-align: center;
   }
   #main {
-    width: calc(100% - 3em);
+    width: 100%;
     float: none;
     padding: 2.25em 1.5em 0.25em 1.5em;
     max-width: 1000px;
