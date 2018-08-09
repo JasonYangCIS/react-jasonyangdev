@@ -102,21 +102,22 @@ class CodeSnippets extends Component {
       <section id="code-snippets">
        <div>
          <Tabs>
+
+          <div label="Giphy Search">
+            <div id="giphy-container">
+              <Giphy/>
+            </div>
+          </div>
+
           <div label="LA Weather">
             <div id="weather-container">
               <Weather/>
             </div>
           </div>
 
-          <div label="Movies Component">
+          <div label="Movies API">
             <div id="movies-container">
               <Movies/>
-            </div>
-          </div>
-
-          <div label="Giphy Component">
-            <div id="giphy-container">
-              <Giphy/>
             </div>
           </div>
 

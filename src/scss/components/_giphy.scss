@@ -3,13 +3,14 @@
 		width: 100%;
 		display: inline-block;
 		margin-bottom: 10px;
+		@include placeholderFontColor($grey);
 		input {
 			border: 2px solid rgba($ltgrey, 1);
 			border-radius: 5px;
 			background: $white;
 			width: 100%;
 			padding: 5px 10px;
-
+			color: $dkgrey;
 		}		
 	}
 	ul#giphy-list {
