@@ -79,6 +79,28 @@ class Gifs extends Component {
     }
   }
 
+  copyGiphyUrl(text) {
+   if (document.queryCommandSupported && document.queryCommandSupported("copy")) {
+        var textarea = document.createElement("textarea");
+        textarea.textContent = text;
+        textarea.style.position = "fixed";  // Prevent scrolling to bottom of page in MS Edge.
+        document.body.appendChild(textarea);
+        textarea.select();
+        try {
+          document.getElementById("copied-notification").classList.add("show-copied");
+          setTimeout(function(){ 
+            document.getElementById("copied-notification").classList.remove("show-copied");
+          }, 2000);
+            return document.execCommand("copy");  // Security exception may be thrown by some browsers.
+        } catch (ex) {
+            console.warn("Copy to clipboard failed.", ex);
+            return false;
+        } finally {
+            document.body.removeChild(textarea);
+        }
+    }
+}
+
   render () {
     let images = [];
 
@@ -88,16 +110,17 @@ class Gifs extends Component {
         src = item.images.fixed_width.url,
         height = item.images.fixed_width.height,
         width = item.images.fixed_width.width,
-        title = item.title;
-        console.log(item);
+        title = item.title,
+        embedUrl = item.embed_url;
 
-        images.push(<li key={key}><img src={src} alt={title} height={height} width={width}/></li>);
-      });
+        images.push(<li key={key} onClick={() => this.copyGiphyUrl(embedUrl)} ><img src={src} alt={title} height={height} width={width} /></li>);
+      }, this);
       return(
-        <div>
+        <div className="giphy-list-container">
           <ul id="giphy-list">
             {images}
           </ul>
+          <div id="copied-notification">Gif URL Copied!</div>
         </div>
       )
     } else if( this.props.keyword === 'Enter search term.' || this.state.giphyList.length === 0) {
