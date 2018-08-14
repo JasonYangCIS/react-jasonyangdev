@@ -302,7 +302,7 @@ ul.icons {
 /* Header */
 
 #header {
-  background-color: $ltgrey;
+  background-color: $ltgreen;
   /* background-image: url("../images/overlay.png"), url("../images/bwalley.jpg"); */
   height: 100%;
   left: 0;
@@ -331,7 +331,7 @@ ul.icons {
 /* Footer */
 
 #footer {
-  background-color: $ltgrey;
+  background-color: $ltgreen;
   bottom: 0;
   left: 0;
   padding: 0 4em 2em 0;
@@ -375,7 +375,7 @@ ul.icons {
   margin-left: 35%;
   max-width: 800px;
   > section {
-    border-top: solid 2px $ltgrey;
+    border-top: solid 2px $ltgreen;
     margin: 2em 0 2em 0;
     padding: 4em 0 0 0;
     &:first-child {
@@ -444,7 +444,7 @@ section#three {
   padding: 5px 0;
   border-radius: 0 0 5px 5px;
   color: $white;
-  background-color: $ltgrey;
+  background-color: $ltgreen;
   @include display-flex;
   @include justify-content(center);
   @include align-items(center);
@@ -524,7 +524,7 @@ footer#footer{
         cursor: pointer;
       }
       &.tab-list-active, &:hover {
-        border-bottom: 2px solid rgba($teal, 0.5 )
+        border-bottom: 2px solid rgba($ltgreen, 0.5 )
       }
     }
   }

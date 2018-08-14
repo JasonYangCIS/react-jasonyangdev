@@ -187,7 +187,6 @@ class App extends Component {
  }
  handleLoad() {
     setTimeout(function() {
-      main.handleClick(); 
       var elem = document.getElementById("loading-container");
       elem.classList.add("hidden");
     }, 1000);
