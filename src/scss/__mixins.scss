@@ -66,3 +66,31 @@
 		color: $color;
 	}
 }
+
+@mixin mask-image($url) {
+	-webkit-mask-image: url($url);
+	mask-image: url($url);
+}
+
+@mixin mask-size($size) {
+	-webkit-mask-size: $size;
+	mask-size: $size;
+}
+
+@mixin mask-position($position) {
+	-webkit-mask-position: $position;
+	mask-position: $position;
+}
+
+@mixin mask-repeat($repeat) {
+	-webkit-mask-repeat: $repeat;
+	mask-repeat: $repeat;
+}
+
+@mixin textInputStyles() {
+	border: 2px solid rgba($ltgrey, 1);
+	border-radius: 5px;
+	background: $white;
+	padding: 5px 10px;
+	color: $dkgrey;
+}

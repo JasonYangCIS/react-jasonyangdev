@@ -37,9 +37,9 @@ class AddPerson extends Component {
 
 		return (
 			<div>
-				<form onSubmit={this.addPerson}>
-					<input type="text" placeholder="name" name="personName" onChange={this.handleChange} value={this.state.value}/>
-					<input type="submit" value="Add Person" />
+				<form className="add-person-form" onSubmit={this.addPerson}>
+					<input type="text" placeholder="name" name="personName" onChange={this.handleChange} value={this.state.value} required />
+					<input type="submit" value="+" />
 				</form>
 
 				{children}
@@ -70,7 +70,7 @@ class Person extends Component {
 		this.state.itemCost.push(event.target.itemCost.value);
 
 		this.setState({
-			numItems: this.state.numItems + 1,
+			numItems: this.state.numItems + 1
 		});
 
 		event.preventDefault();
@@ -88,8 +88,8 @@ class Person extends Component {
 				{this.props.name}
 
 				<form onSubmit={this.addNewCost}>
-					<input type="text" 	 placeholder="Item"  name="itemName" onChange={this.handleChange} value={this.state.value}/>
-					<input type="number" placeholder="$0.00" name="itemCost" onChange={this.handleChange} value={this.state.value}/>
+					<input type="text" 	 placeholder="item"  name="itemName" onChange={this.handleChange} value={this.state.value} required />
+					<input type="number" placeholder="$0.00" name="itemCost" onChange={this.handleChange} value={this.state.value} required step="0.01" min="0"/>
 					<input type="submit" value="Add Item" />
 				</form>
 
@@ -101,9 +101,6 @@ class Person extends Component {
 }
 
 class Item extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (
@@ -116,9 +113,6 @@ class Item extends Component {
 }
 
 class BillSplitter extends Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (

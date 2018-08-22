@@ -1,0 +1,29 @@
+#bill-splitter-container {
+	form.add-person-form {
+
+		@include placeholderFontColor($grey);
+		input[type="text"] {
+			@include textInputStyles;
+
+			width: calc(100% - 52px);
+			margin-right: 10px;
+			@media screen and (min-width: 1024px) {
+				width: 150px;
+			}
+		}
+		input[type="submit"] {
+			width: 42px;
+			height: 42px;
+			padding: 0;
+			text-indent: -9999px;
+			background-color: $dkgrey;
+			@include mask-image('../images/user-plus-solid.svg');
+			@include mask-position(center);
+			@include mask-size(30px 30px);
+			@include mask-repeat(no-repeat);
+			&:hover {
+				cursor: pointer;
+			}
+		}
+	}
+}
