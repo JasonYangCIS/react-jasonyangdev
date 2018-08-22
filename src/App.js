@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import main       from './js/main'
-import contentful from './js/components/contentful'
-import Tabs       from './js/components/tabs';
-import Movies     from './js/components/movies';
-import Weather    from './js/components/weather';
-import Giphy      from './js/components/giphy';
+import main           from './js/main'
+import Contentful     from './js/components/contentful'
+import Tabs           from './js/components/tabs';
+import Movies         from './js/components/movies';
+import Weather        from './js/components/weather';
+import Giphy          from './js/components/giphy';
+import BillSplitter   from './js/components/bill-splitter';
 
 class Header extends Component {
     constructor() {
@@ -17,7 +18,7 @@ class Header extends Component {
   }
 
   componentDidMount() {
-    contentful.headerBuilder()
+    Contentful.headerBuilder()
   }
 
   render() {
@@ -32,7 +33,7 @@ class Header extends Component {
 class Introduction extends Component {
 
   componentDidMount() {
-    contentful.introductionBuilder()
+    Contentful.introductionBuilder()
   }
 
   render() {
@@ -45,7 +46,7 @@ class Introduction extends Component {
 class Skills extends Component {
 
   componentDidMount() {
-    contentful.mySkillsBuilder()
+    Contentful.mySkillsBuilder()
   }
 
   render() {
@@ -57,7 +58,7 @@ class Skills extends Component {
 
 class Experience extends Component {
   componentDidMount() {
-    contentful.experienceBuilder()
+    Contentful.experienceBuilder()
   }
 
   render() {
@@ -69,7 +70,7 @@ class Experience extends Component {
 
 class Facts extends Component {
   componentDidMount() {
-    contentful.factsBuilder()
+    Contentful.factsBuilder()
   }
 
   render() {
@@ -81,7 +82,7 @@ class Facts extends Component {
 
 class FavoriteBuilds extends Component {
   componentDidMount() {
-    contentful.favoriteSitesBuilder()
+    Contentful.favoriteSitesBuilder()
   }
 
   render() {
@@ -94,7 +95,7 @@ class FavoriteBuilds extends Component {
 class CodeSnippets extends Component {
 
   componentDidMount() {
-    contentful.codeSnippetsBuilder();
+    Contentful.codeSnippetsBuilder();
   }
 
   render() {
@@ -102,6 +103,12 @@ class CodeSnippets extends Component {
       <section id="code-snippets">
        <div>
          <Tabs>
+          
+          <div label="Bill Splitter">
+            <div id="bill-splitter-container">
+              <BillSplitter/>
+            </div>
+          </div>
 
           <div label="Giphy Search">
             <div id="giphy-container">
@@ -131,7 +138,7 @@ class CodeSnippets extends Component {
 
 class Contact extends Component {
   componentDidMount() {
-    contentful.contactBuilder()
+    Contentful.contactBuilder()
   }
 
   render() {
@@ -143,7 +150,7 @@ class Contact extends Component {
 
 class Footer extends Component {
   componentDidMount() {
-    contentful.footerBuilder()
+    Contentful.footerBuilder()
   }
 
   render () {

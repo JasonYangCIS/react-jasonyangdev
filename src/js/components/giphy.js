@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Loading from './loading';
 
 class GiphySearchbar extends Component {
   
