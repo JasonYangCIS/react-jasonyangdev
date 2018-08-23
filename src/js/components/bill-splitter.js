@@ -5,6 +5,8 @@ class AddPerson extends Component {
 		super(props);
 		this.state = {
 			value: [],
+			taxPercentage: 9,
+			tipPercentage: 15,
 			numPeople: 0,
 			personName: []
 		};
@@ -14,7 +16,12 @@ class AddPerson extends Component {
 	}
 
 	handleChange(event) {
-		this.setState({value: event.target.value});
+		console.log(event.target.taxPercentage);
+		this.setState({
+			value: event.target.name.value,
+			// taxPercentage: event.target.taxPercentage.value,
+			// tipPercentage: event.target.tipPercentage.value
+		});
 	}
 
 	addPerson(event) {
@@ -36,10 +43,14 @@ class AddPerson extends Component {
 	    };
 
 		return (
-			<div>
+			<div className="bill-splitter-inner">
 				<form className="add-person-form" onSubmit={this.addPerson}>
-					<input type="text" placeholder="name" name="personName" onChange={this.handleChange} value={this.state.value} required />
-					<input type="submit" value="+" />
+					<div className="add-person-fields">
+						<input type="text" placeholder="add name" name="personName" onChange={this.handleChange} value={this.state.value} required />
+						<input type="submit" value="+" />
+					</div>
+					<input type="text" placeholder="set tax %" name="taxPercentage" onChange={this.handleChange} value={this.state.value} required />
+					<input type="text" placeholder="set tip %" name="tipPercentage" onChange={this.handleChange} value={this.state.value} required />
 				</form>
 
 				{children}
@@ -69,8 +80,10 @@ class Person extends Component {
 		this.state.itemName.push(event.target.itemName.value);
 		this.state.itemCost.push(event.target.itemCost.value);
 
+		/*** TODO: fix value uncontrollable vs controllable inputs warning ***/
 		this.setState({
-			numItems: this.state.numItems + 1
+			numItems: this.state.numItems + 1,
+			value: ''
 		});
 
 		event.preventDefault();
@@ -78,8 +91,11 @@ class Person extends Component {
 
 	render() {
 		const items = [];
+		let totalItemCost = 0;
+
 	    for (var i = 0; i < this.state.numItems; i++) {
 	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={this.state.itemCost[i]}/>);
+	    	totalItemCost += parseFloat(this.state.itemCost[i]);
 	    };
 
 		return (
@@ -95,6 +111,10 @@ class Person extends Component {
 
 				{items}
 
+				<div className="item-totals">
+					<span className="total-label">Total: </span>
+					<span className="total-value">${totalItemCost}</span>
+				</div>
 			</div>
 		)
 	}
@@ -104,9 +124,9 @@ class Item extends Component {
 
 	render() {
 		return (
-			<div>
-				{this.props.itemName}
-				{this.props.itemCost}
+			<div className="item">
+				<span className="item-name">{this.props.itemName}</span>
+				<span className="item-cost">${this.props.itemCost}</span>
 			</div>
 		)
 	}	
@@ -116,7 +136,7 @@ class BillSplitter extends Component {
 
 	render() {
 		return (
-			<div>
+			<div className="bill-splitter">
 				<AddPerson/>
 			</div>
 		);
