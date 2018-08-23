@@ -192,7 +192,7 @@ class Person extends Component {
 		const items = [];
 
 	    for (var i = 0; i < this.state.numItems; i++) {
-	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={this.state.itemCost[i]}/>);
+	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={parseFloat(this.state.itemCost[i]).toFixed(2)}/>);
 	    };
 
 
@@ -232,19 +232,23 @@ class Person extends Component {
 
 class GrandTotal extends Component {
 	render () {
-		return (
-			<div className="grand-total-container">
-				<span className="grand-tax">Total Tax: {this.props.billTax}</span>
-				<span className="grand-tax">Total Tip: {this.props.billTip}</span>
-				<span className="grand-total">Sub Total: {this.props.billSubTotal}</span>
-				<span className="grand-total">Grand Total: {this.props.billGrandTotal}</span>
-			</div>
-		)
+
+		if ( this.props.billGrandTotal > 0 ) {
+			return (
+				<div className="grand-total-container">
+					<div className="sub-total"> <span>Sub Total:</span> <span>{this.props.billSubTotal.toFixed(2)} </span> </div>
+					<div className="grand-tax">	<span>Total Tax:</span> <span>{this.props.billTax.toFixed(2)} </span> </div>
+					<div className="grand-tax">	<span>Total Tip:</span> <span>{this.props.billTip.toFixed(2)} </span> </div>
+					<div className="grand-total"><span>Grand Total:</span> <span>${this.props.billGrandTotal.toFixed(2)}</span> </div>
+				</div>
+			)
+		} else {
+			return null
+		}
 	}
 }
 
 class Item extends Component {
-
 	render() {
 		return (
 			<div className="item">
@@ -254,16 +258,6 @@ class Item extends Component {
 		)
 	}	
 }
-
-// class BillSplitter extends Component {
-// 	render() {
-// 		return (
-// 			<div className="bill-splitter">
-// 				<AddPerson/>
-// 			</div>
-// 		);
-// 	}
-// }
 
 export default BillSplitter;
 
