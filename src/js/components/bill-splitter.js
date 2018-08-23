@@ -199,7 +199,7 @@ class Person extends Component {
 		return (
 			<div className="person-card">
 				
-				{this.props.name}
+				<span className="person-name">{this.props.name}</span>
 
 				<form onSubmit={this.addNewCost}>
 					<input type="text" 	 placeholder="item"  name="itemName" onChange={this.handleChange} value={this.state.value} required />
