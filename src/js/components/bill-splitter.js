@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class AddPerson extends Component {
+class BillSplitter extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -8,11 +8,16 @@ class AddPerson extends Component {
 			tipPercentage: 15,
 			numPeople: 0,
 			personName: '',
-			peopleArray: []
+			peopleArray: [],
+			personTotal: [],
+			billTax: 0.00,
+			billTip: 0.00,
+			billTotal: 0.00,
 		};
 
 		this.addPerson = this.addPerson.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.personTotal = this.personTotal.bind(this);
 	}
 
 	handleChange(event) {
@@ -34,34 +39,62 @@ class AddPerson extends Component {
 		event.preventDefault();
 	}
 
+	personTotal(key, itemTotal) {
+		const personTotal = this.state.personTotal;
+	    personTotal[key] = itemTotal;
+	    
+	    let newTotal = 0.00;
+
+	    this.setState({
+	        personTotal,
+	    });
+
+	    let grandTotal = this.state.personTotal.map( (total) => 
+	    	newTotal += parseFloat(total)
+	    );
+
+	     this.setState({
+	        billTotal: newTotal,
+	    });
+
+	}
+
 	render() {
 	    const children = [];
 
 	    for (var i = 0; i < this.state.numPeople; i++) {
-	    	children.push(<Person key={i} number={i} name={this.state.peopleArray[i]} tax={this.state.taxPercentage} tip={this.state.tipPercentage}/>);
+	    	children.push(<Person key={i} number={i} name={this.state.peopleArray[i]} tax={this.state.taxPercentage} tip={this.state.tipPercentage} personTotal={this.personTotal}  />);
 	    };
 
+		// React.Children.map(children, function(thisArg){
+			// console.log(thisArg);
+		// });
+
 		return (
-			<div className="bill-splitter-inner">
-				<form className="add-person-form" onSubmit={this.addPerson}>
-					<label className="add-person-fields">
-						Add Person:
-						<input type="text" placeholder="add name" name="personName" onChange={this.handleChange} value={this.state.personName} required />
-						<input type="submit" value="+" />
-					</label>
+			<div className="bill-splitter">
+				<div className="bill-splitter-inner">
+					<form className="add-person-form" onSubmit={this.addPerson}>
+						<label className="add-person-fields">
+							Add Person:
+							<input type="text" placeholder="add name" name="personName" onChange={this.handleChange} value={this.state.personName} required />
+							<input type="submit" value="+" />
+						</label>
 
-					<label className="tax-tip-container">
-          				Tax %:
-						<input type="number" placeholder="set tax %" name="taxPercentage" onChange={this.handleChange} value={this.state.taxPercentage} required />
-					</label>
+						<label className="tax-tip-container">
+	          				Tax %:
+							<input type="number" placeholder="set tax %" name="taxPercentage" onChange={this.handleChange} value={this.state.taxPercentage} required />
+						</label>
 
-					<label className="tax-tip-container">
-						Tip %:
-						<input type="number" placeholder="set tip %" name="tipPercentage" onChange={this.handleChange} value={this.state.tipPercentage} required />
-					</label>
-				</form>
+						<label className="tax-tip-container">
+							Tip %:
+							<input type="number" placeholder="set tip %" name="tipPercentage" onChange={this.handleChange} value={this.state.tipPercentage} required />
+						</label>
+					</form>
 
-				{children}
+					{children}
+				</div>
+
+				<GrandTotal billTax={this.state.billTax} billTip={this.state.billTip} billTotal={this.state.billTotal} />
 			</div>
 		);
 	}
@@ -77,8 +110,7 @@ class Person extends Component {
 			subTotalItemCost: 0.00,
 			totalTaxCost: 0.00,
 			totalTipCost: 0.00,
-			grandTotalItemCost: 0.00,
-			grandTotal: 0.00
+			grandTotalItemCost: 0.00
 		};
 
 		this.addNewCost = this.addNewCost.bind(this);
@@ -128,6 +160,8 @@ class Person extends Component {
 	    	totalTipCost: totalTipCost,
 	    	grandTotalItemCost: grandTotalItemCost
 	    });
+
+	    this.props.personTotal(this.props.number, grandTotalItemCost);
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot){
@@ -173,7 +207,7 @@ class Person extends Component {
 						<span className="total-value">${this.state.grandTotalItemCost}</span>
 					</div>
 				</div>
-			</div>
+			</div>	
 		)
 	}
 }
@@ -182,7 +216,9 @@ class GrandTotal extends Component {
 	render () {
 		return (
 			<div className="grand-total-container">
-				<span className="grand-total">Grand Total:</span>
+				<span className="grand-tax">Total Tax: {this.props.billTax}</span>
+				<span className="grand-tax">Total Tip: {this.props.billTip}</span>
+				<span className="grand-total">Grand Total: {this.props.billTotal}</span>
 			</div>
 		)
 	}
@@ -200,14 +236,17 @@ class Item extends Component {
 	}	
 }
 
-class BillSplitter extends Component {
-	render() {
-		return (
-			<div className="bill-splitter">
-				<AddPerson/>
-			</div>
-		);
-	}
-}
+// class BillSplitter extends Component {
+// 	render() {
+// 		return (
+// 			<div className="bill-splitter">
+// 				<AddPerson/>
+// 			</div>
+// 		);
+// 	}
+// }
 
 export default BillSplitter;
+
+
+
