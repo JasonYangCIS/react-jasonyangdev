@@ -4,11 +4,11 @@ class AddPerson extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			value: [],
 			taxPercentage: 9,
 			tipPercentage: 15,
 			numPeople: 0,
-			personName: []
+			personName: '',
+			peopleArray: []
 		};
 
 		this.addPerson = this.addPerson.bind(this);
@@ -16,20 +16,19 @@ class AddPerson extends Component {
 	}
 
 	handleChange(event) {
-		console.log(event.target.taxPercentage);
+		const target = event.target;
+		const value = target.value;
+		const name = target.name;
 		this.setState({
-			value: event.target.name.value,
-			// taxPercentage: event.target.taxPercentage.value,
-			// tipPercentage: event.target.tipPercentage.value
+			[name]: value
 		});
 	}
 
 	addPerson(event) {
-		this.state.personName.push(event.target.personName.value);
+		this.state.peopleArray.push(event.target.personName.value);
 
 		this.setState({
-			numPeople: this.state.numPeople + 1,
-			value: ''
+			numPeople: this.state.numPeople + 1
 		});
 
 		event.preventDefault();
@@ -39,18 +38,27 @@ class AddPerson extends Component {
 	    const children = [];
 
 	    for (var i = 0; i < this.state.numPeople; i++) {
-	    	children.push(<Person key={i} number={i} name={this.state.personName[i]} />);
+	    	children.push(<Person key={i} number={i} name={this.state.peopleArray[i]} tax={this.state.taxPercentage} tip={this.state.tipPercentage}/>);
 	    };
 
 		return (
 			<div className="bill-splitter-inner">
 				<form className="add-person-form" onSubmit={this.addPerson}>
-					<div className="add-person-fields">
-						<input type="text" placeholder="add name" name="personName" onChange={this.handleChange} value={this.state.value} required />
+					<label className="add-person-fields">
+						Add Person:
+						<input type="text" placeholder="add name" name="personName" onChange={this.handleChange} value={this.state.personName} required />
 						<input type="submit" value="+" />
-					</div>
-					<input type="text" placeholder="set tax %" name="taxPercentage" onChange={this.handleChange} value={this.state.value} required />
-					<input type="text" placeholder="set tip %" name="tipPercentage" onChange={this.handleChange} value={this.state.value} required />
+					</label>
+
+					<label className="tax-tip-container">
+          				Tax %:
+						<input type="number" placeholder="set tax %" name="taxPercentage" onChange={this.handleChange} value={this.state.taxPercentage} required />
+					</label>
+
+					<label className="tax-tip-container">
+						Tip %:
+						<input type="number" placeholder="set tip %" name="tipPercentage" onChange={this.handleChange} value={this.state.tipPercentage} required />
+					</label>
 				</form>
 
 				{children}
@@ -89,14 +97,24 @@ class Person extends Component {
 		event.preventDefault();
 	}
 
+
+
 	render() {
 		const items = [];
-		let totalItemCost = 0;
+		let subTotalItemCost = 0;
+		let totalTaxCost = 0;
+		let totalTipCost = 0;
+		let grandTotalItemCost = 0;
 
 	    for (var i = 0; i < this.state.numItems; i++) {
 	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={this.state.itemCost[i]}/>);
-	    	totalItemCost += parseFloat(this.state.itemCost[i]);
+	    	subTotalItemCost += parseFloat(this.state.itemCost[i]);
 	    };
+
+	    // Calculations for individual person cards
+	    totalTaxCost = (subTotalItemCost * parseFloat(this.props.tax * 0.01)).toFixed(2);
+	    totalTipCost = (subTotalItemCost * parseFloat(this.props.tip * 0.01)).toFixed(2);
+	    grandTotalItemCost = parseFloat(subTotalItemCost) + parseFloat(totalTaxCost) + parseFloat(totalTipCost);
 
 		return (
 			<div className="person-card">
@@ -112,8 +130,20 @@ class Person extends Component {
 				{items}
 
 				<div className="item-totals">
-					<span className="total-label">Total: </span>
-					<span className="total-value">${totalItemCost}</span>
+					<div>
+						<span className="total-label">Tax: </span>
+						<span className="total-value">${totalTaxCost}</span>
+					</div>
+
+					<div>
+						<span className="total-label">Tip: </span>
+						<span className="total-value">${totalTipCost}</span>
+					</div>
+
+					<div className="total-container">
+						<span className="total-label">Total: </span>
+						<span className="total-value">${grandTotalItemCost}</span>
+					</div>
 				</div>
 			</div>
 		)
