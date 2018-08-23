@@ -73,7 +73,12 @@ class Person extends Component {
 		this.state = {
 			numItems: 0,
 			itemName: [],
-			itemCost: []
+			itemCost: [],
+			subTotalItemCost: 0.00,
+			totalTaxCost: 0.00,
+			totalTipCost: 0.00,
+			grandTotalItemCost: 0.00,
+			grandTotal: 0.00
 		};
 
 		this.addNewCost = this.addNewCost.bind(this);
@@ -87,34 +92,57 @@ class Person extends Component {
 	addNewCost(event){
 		this.state.itemName.push(event.target.itemName.value);
 		this.state.itemCost.push(event.target.itemCost.value);
-
+		
 		/*** TODO: fix value uncontrollable vs controllable inputs warning ***/
-		this.setState({
-			numItems: this.state.numItems + 1,
-			value: ''
-		});
+    	this.setState(
+		    { 
+		    	numItems: this.state.numItems + 1,
+		    	value: ''
+		    },
+		    () => {
+		    	this.calculateCosts();
+		    }
+		);
 
 		event.preventDefault();
 	}
 
-
-
-	render() {
-		const items = [];
+	calculateCosts() {
 		let subTotalItemCost = 0;
 		let totalTaxCost = 0;
 		let totalTipCost = 0;
 		let grandTotalItemCost = 0;
 
-	    for (var i = 0; i < this.state.numItems; i++) {
-	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={this.state.itemCost[i]}/>);
+		for (var i = 0; i < this.state.numItems; i++) {
 	    	subTotalItemCost += parseFloat(this.state.itemCost[i]);
+
+	    	// Calculations for individual person cards
+	    	totalTaxCost = (subTotalItemCost * parseFloat(this.props.tax * 0.01)).toFixed(2);
+	    	totalTipCost = (subTotalItemCost * parseFloat(this.props.tip * 0.01)).toFixed(2);
+	    	grandTotalItemCost = (parseFloat(subTotalItemCost) + parseFloat(totalTaxCost) + parseFloat(totalTipCost)).toFixed(2);
 	    };
 
-	    // Calculations for individual person cards
-	    totalTaxCost = (subTotalItemCost * parseFloat(this.props.tax * 0.01)).toFixed(2);
-	    totalTipCost = (subTotalItemCost * parseFloat(this.props.tip * 0.01)).toFixed(2);
-	    grandTotalItemCost = parseFloat(subTotalItemCost) + parseFloat(totalTaxCost) + parseFloat(totalTipCost);
+	    this.setState({
+	    	subTotalItemCost: subTotalItemCost,
+	    	totalTaxCost: totalTaxCost,
+	    	totalTipCost: totalTipCost,
+	    	grandTotalItemCost: grandTotalItemCost
+	    });
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot){
+		if ( prevProps.tax !== this.props.tax || prevProps.tip !== this.props.tip) {
+			this.calculateCosts();
+		}
+	}
+
+	render() {
+		const items = [];
+
+	    for (var i = 0; i < this.state.numItems; i++) {
+	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={this.state.itemCost[i]}/>);
+	    };
+
 
 		return (
 			<div className="person-card">
@@ -132,19 +160,29 @@ class Person extends Component {
 				<div className="item-totals">
 					<div>
 						<span className="total-label">Tax: </span>
-						<span className="total-value">${totalTaxCost}</span>
+						<span className="total-value">${this.state.totalTaxCost}</span>
 					</div>
 
 					<div>
 						<span className="total-label">Tip: </span>
-						<span className="total-value">${totalTipCost}</span>
+						<span className="total-value">${this.state.totalTipCost}</span>
 					</div>
 
 					<div className="total-container">
 						<span className="total-label">Total: </span>
-						<span className="total-value">${grandTotalItemCost}</span>
+						<span className="total-value">${this.state.grandTotalItemCost}</span>
 					</div>
 				</div>
+			</div>
+		)
+	}
+}
+
+class GrandTotal extends Component {
+	render () {
+		return (
+			<div className="grand-total-container">
+				<span className="grand-total">Grand Total:</span>
 			</div>
 		)
 	}
@@ -163,7 +201,6 @@ class Item extends Component {
 }
 
 class BillSplitter extends Component {
-
 	render() {
 		return (
 			<div className="bill-splitter">
