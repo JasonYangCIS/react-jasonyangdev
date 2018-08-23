@@ -12,7 +12,8 @@ class BillSplitter extends Component {
 			personTotal: [],
 			billTax: 0.00,
 			billTip: 0.00,
-			billTotal: 0.00,
+			billSubTotal: 0.00,
+			billGrandTotal: 0.00,
 		};
 
 		this.addPerson = this.addPerson.bind(this);
@@ -39,22 +40,38 @@ class BillSplitter extends Component {
 		event.preventDefault();
 	}
 
-	personTotal(key, itemTotal) {
-		const personTotal = this.state.personTotal;
-	    personTotal[key] = itemTotal;
+	personTotal(key, subTotalItemCost, grandTotalItemCost, totalTaxCost, totalTipCost) {
+	    let billTax = 0.00;
+	    let billTip = 0.00;
+	    let billSubTotal = 0.00;
+	    let billGrandTotal = 0.00;
 	    
-	    let newTotal = 0.00;
+		const personTotal = this.state.personTotal;
+	    personTotal[key] = {
+	    	grandTotalItemCost: grandTotalItemCost,
+	    	subTotalItemCost: subTotalItemCost,
+	    	totalTaxCost: totalTaxCost,
+	    	totalTipCost: totalTipCost
+	    };
+	    
 
 	    this.setState({
 	        personTotal,
 	    });
 
-	    let grandTotal = this.state.personTotal.map( (total) => 
-	    	newTotal += parseFloat(total)
+	    let grandTotal = this.state.personTotal.map( (totals) => {
+		    	billTip += parseFloat(totals.totalTipCost);
+		    	billTax += parseFloat(totals.totalTaxCost);
+		    	billSubTotal += parseFloat(totals.subTotalItemCost);
+		    	billGrandTotal += parseFloat(totals.grandTotalItemCost);
+	    	}
 	    );
 
 	     this.setState({
-	        billTotal: newTotal,
+	        billTip: billTip,
+	        billTax: billTax,
+	        billSubTotal: billSubTotal,
+	        billGrandTotal: billGrandTotal,
 	    });
 
 	}
@@ -94,7 +111,8 @@ class BillSplitter extends Component {
 					{children}
 				</div>
 
-				<GrandTotal billTax={this.state.billTax} billTip={this.state.billTip} billTotal={this.state.billTotal} />
+				<GrandTotal billTax={this.state.billTax} billTip={this.state.billTip} billSubTotal={this.state.billSubTotal} billGrandTotal={this.state.billGrandTotal} />
+
 			</div>
 		);
 	}
@@ -161,7 +179,7 @@ class Person extends Component {
 	    	grandTotalItemCost: grandTotalItemCost
 	    });
 
-	    this.props.personTotal(this.props.number, grandTotalItemCost);
+	    this.props.personTotal(this.props.number, subTotalItemCost, grandTotalItemCost, totalTaxCost, totalTipCost);
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot){
@@ -218,7 +236,8 @@ class GrandTotal extends Component {
 			<div className="grand-total-container">
 				<span className="grand-tax">Total Tax: {this.props.billTax}</span>
 				<span className="grand-tax">Total Tip: {this.props.billTip}</span>
-				<span className="grand-total">Grand Total: {this.props.billTotal}</span>
+				<span className="grand-total">Sub Total: {this.props.billSubTotal}</span>
+				<span className="grand-total">Grand Total: {this.props.billGrandTotal}</span>
 			</div>
 		)
 	}
