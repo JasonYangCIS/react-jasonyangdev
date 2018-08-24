@@ -108,7 +108,7 @@
 				left: 0;
 				margin: auto;
 				background: $dkgrey;
-				content: ' ';
+				content: '';
 			}
 			&:before {
 				@include transform(rotate(-45deg));

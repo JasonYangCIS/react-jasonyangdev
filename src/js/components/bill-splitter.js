@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
+// import ReactDOM from 'react-dom';
 
 class BillSplitter extends Component {
 	constructor(props) {
@@ -60,7 +60,7 @@ class BillSplitter extends Component {
 	        personTotal,
 	    });
 
-	    let grandTotal = this.state.personTotal.map( (totals) => {
+	    this.state.personTotal.forEach(function(totals) {
 		    	billTip += parseFloat(totals.totalTipCost);
 		    	billTax += parseFloat(totals.totalTaxCost);
 		    	billSubTotal += parseFloat(totals.subTotalItemCost);
@@ -211,12 +211,12 @@ class Person extends Component {
 	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={parseFloat(this.state.itemCost[i]).toFixed(2)}/>);
 	    };
 	    
-	    if ( this.state.active == true ) {
+	    if ( this.state.active === true ) {
 			return (
 				<div className="person-card">
 					
 					<span className="person-name">{this.props.name}</span>
-					
+
 					<div className="remove" onClick={this.removePerson}>X</div>
 					<form onSubmit={this.addNewCost}>
 						<input type="text" 	 placeholder="item"  name="itemName" onChange={this.handleChange} value={this.state.value} required />
