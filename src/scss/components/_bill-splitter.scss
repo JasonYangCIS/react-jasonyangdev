@@ -60,6 +60,7 @@
 		@include placeholderFontColor($grey);
 		margin-top: 10px;
 		margin-bottom: 10px;
+		position: relative;
 		@media screen and (min-width: 1024px) {
 			width: calc(33.33% - 10px);
 			margin: 10px;
@@ -85,6 +86,35 @@
 			&:nth-of-type(3n+3) {
 				margin-left: 10px;
 				margin-right: 0px;
+			}
+		}
+		.remove {
+			position: absolute;
+			top: 5px;
+			right: 5px;
+			height: 30px;
+			width: 30px;
+			border-radius: 50%;
+			box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
+			cursor: pointer;
+			text-indent: -9999px;
+			&:before, &:after {
+				height: 2px;
+				width: 12px;
+				position: absolute;
+				top: 0;
+				right: 0;
+				bottom: 0;
+				left: 0;
+				margin: auto;
+				background: $dkgrey;
+				content: ' ';
+			}
+			&:before {
+				@include transform(rotate(-45deg));
+			}
+			&:after {
+				@include transform(rotate(45deg));
 			}
 		}
 		.person-name {

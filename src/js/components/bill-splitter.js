@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 
 class BillSplitter extends Component {
 	constructor(props) {
@@ -128,11 +129,13 @@ class Person extends Component {
 			subTotalItemCost: 0.00,
 			totalTaxCost: 0.00,
 			totalTipCost: 0.00,
-			grandTotalItemCost: 0.00
+			grandTotalItemCost: 0.00,
+			active: true
 		};
 
 		this.addNewCost = this.addNewCost.bind(this);
 		this.handleChange = this.handleChange.bind(this);
+		this.removePerson = this.removePerson.bind(this);
 	}
 
 	handleChange(event) {
@@ -188,45 +191,63 @@ class Person extends Component {
 		}
 	}
 
+	removePerson(e) {
+		this.setState({
+			active: false,
+			grandTotalItemCost: 0.00,
+			totalTaxCost: 0.00,
+			totalTipCost: 0.00
+		});
+	    this.props.personTotal(this.props.number, 0, 0, 0, 0);
+
+		/*** TODO: clean states? ***/
+		// ReactDOM.unmountComponentAtNode(e.target.parentNode);
+	}
+
 	render() {
 		const items = [];
 
 	    for (var i = 0; i < this.state.numItems; i++) {
 	    	items.push(<Item key={i} number={i} itemName={this.state.itemName[i]} itemCost={parseFloat(this.state.itemCost[i]).toFixed(2)}/>);
 	    };
+	    
+	    if ( this.state.active == true ) {
+			return (
+				<div className="person-card">
+					
+					<span className="person-name">{this.props.name}</span>
+					
+					<div className="remove" onClick={this.removePerson}>X</div>
+					<form onSubmit={this.addNewCost}>
+						<input type="text" 	 placeholder="item"  name="itemName" onChange={this.handleChange} value={this.state.value} required />
+						<input type="number" placeholder="$0.00" name="itemCost" onChange={this.handleChange} value={this.state.value} required step="0.01" min="0"/>
+						<input type="submit" value="Add Item" />
+					</form>
 
+					{items}
 
-		return (
-			<div className="person-card">
-				
-				<span className="person-name">{this.props.name}</span>
+					<div className="item-totals">
+						<div>
+							<span className="total-label">Tax: </span>
+							<span className="total-value">${this.state.totalTaxCost}</span>
+						</div>
 
-				<form onSubmit={this.addNewCost}>
-					<input type="text" 	 placeholder="item"  name="itemName" onChange={this.handleChange} value={this.state.value} required />
-					<input type="number" placeholder="$0.00" name="itemCost" onChange={this.handleChange} value={this.state.value} required step="0.01" min="0"/>
-					<input type="submit" value="Add Item" />
-				</form>
+						<div>
+							<span className="total-label">Tip: </span>
+							<span className="total-value">${this.state.totalTipCost}</span>
+						</div>
 
-				{items}
-
-				<div className="item-totals">
-					<div>
-						<span className="total-label">Tax: </span>
-						<span className="total-value">${this.state.totalTaxCost}</span>
+						<div className="total-container">
+							<span className="total-label">Total: </span>
+							<span className="total-value">${this.state.grandTotalItemCost}</span>
+						</div>
 					</div>
-
-					<div>
-						<span className="total-label">Tip: </span>
-						<span className="total-value">${this.state.totalTipCost}</span>
-					</div>
-
-					<div className="total-container">
-						<span className="total-label">Total: </span>
-						<span className="total-value">${this.state.grandTotalItemCost}</span>
-					</div>
-				</div>
-			</div>	
-		)
+				</div>	
+			)
+		}
+		else {
+			return null
+		}
 	}
 }
 
