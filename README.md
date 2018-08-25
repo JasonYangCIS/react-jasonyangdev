@@ -4,7 +4,7 @@ This is build with React JS and Contentful along with numerous other API's for t
 
 ## Fun Code Snippets
 https://www.jasonyangdev.com/#code-snippets
-This section consists of 4 custom components for learning purposes.
+This section consists of 4 custom components (planning to build more) for experimental and learning purposes as well as to challenge myself to build something interesting/fun.
 
 ### Bill Spliiter
 * Custom build that will help calculate how much each person owes at the end of dinner.
