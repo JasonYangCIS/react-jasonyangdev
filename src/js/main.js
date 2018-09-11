@@ -35,8 +35,8 @@ const mainClass = {
     var i = 0;
 
     /* change background colors */
-    setStyle = "background-color: rgba(" + randomColor + ", 1 )";
-    el = document.querySelectorAll("header#header, .myskillicons .caption, footer#footer");
+    setStyle = "background-color: rgba(" + randomColor + ", 0.85 )";
+    el = document.querySelectorAll("header#header, .myskillicons .caption, footer#footer, .material-bar");
     for (i = 0; i < el.length; i++) {
       el[i].setAttribute("style", setStyle);
     }

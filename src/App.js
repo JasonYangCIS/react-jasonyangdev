@@ -25,6 +25,7 @@ class Header extends Component {
     return(
       <header id="header">
         <div className="image avatar"><a href onClick={() => main.handleClick()}></a></div>
+        <span className="material-bar"></span>
       </header>
      )
   }
