@@ -554,6 +554,9 @@ footer#footer,
 
 
 @media screen and (max-width: 768px) {
+  #main {
+    box-shadow: inset 10px 0px 10px rgba($black, 0); //hidden
+  }
   #header {
     height: 100%;
     left: 0;
@@ -561,6 +564,7 @@ footer#footer,
     position: relative;
     text-align: center;
     width: 100%;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
     .material-bar {
       top: 25%;
       right: -25%;

@@ -7,7 +7,7 @@ const mainClass = {
       "100, 124, 100",  //Army
       "176, 190, 197",  //Silver
       "255, 138, 128",  //Pink
-      "100, 181, 246",  //Blue
+      "71, 172, 255",  //Blue
       "52, 152, 219",   //Blue (Peterriver)
       "44, 62, 80",     //Midnight Blue
       "26, 188, 156",   //Turquoise

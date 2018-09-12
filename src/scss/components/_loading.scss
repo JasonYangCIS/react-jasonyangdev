@@ -8,7 +8,7 @@
   margin: auto;
   height: 100%;
   width: 100%;
-  z-index: 1;
+  z-index: 9999;
   opacity: 1;
   overflow: hidden;
   @include transition(opacity 0.5s ease, z-index 1.5s ease);
