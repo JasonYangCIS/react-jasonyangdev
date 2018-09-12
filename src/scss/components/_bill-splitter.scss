@@ -1,232 +1,235 @@
 #bill-splitter-container {
-	.bill-splitter-inner {
-		@include display-flex();
-		@include justify-content(flex-start);
-		@include flex-wrap(wrap);
-		width: 100%;
-	}
-	form.add-person-form {
-		@include placeholderFontColor($grey);
-		width: 100%;
-		@include display-flex();
-		@include justify-content(space-between);
-		@include flex-wrap(wrap);
-		.add-person-fields {
-			width: 100%;
-			@media screen and (min-width: 1024px) {
-				width: 50%;
-			}
-			input[name="personName"] {
-				@include textInputStyles;
-				width: calc(100% - 52px);
-				margin-right: 10px;
-			}
-		}
-		label.tax-tip-container {
-			width: calc(50% - 10px);
-			margin: 10px 0;
-			@media screen and (min-width: 1024px) {
-				width: calc(25% - 10px);
-				margin: 0;
-			}
-			input[name="tipPercentage"], input[name="taxPercentage"] {
-				@include textInputStyles;
-				width: 100%;
-			}
-		}
-		input[type="submit"] {
-			width: 42px;
-			height: 42px;
-			padding: 0;
-			text-indent: -9999px;
-			background-color: $dkgrey;
-			@include mask-image('../images/user-plus-solid.svg');
-			@include mask-position(center);
-			@include mask-size(30px 30px);
-			@include mask-repeat(no-repeat);
-			opacity: 1;
-			@include transition(opacity 0.3s ease);
-			&:hover {
-				cursor: pointer;
-				opacity: 0.7;
-			}
-		}
-	}
-	.person-card {
-		width: calc(50% - 5px);
-		padding: 15px 5px;
-		display: inline-block;
-		box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
-		@include placeholderFontColor($grey);
-		margin-top: 10px;
-		margin-bottom: 10px;
-		position: relative;
-		@media screen and (min-width: 1024px) {
-			width: calc(33.33% - 10px);
-			margin: 10px;
-		}
-		&:nth-of-type(odd) {
-			margin-right: 5px;
-		}
-		&:nth-of-type(even) {
-			margin-left: 5px;
-			@media screen and (min-width: 1024px) {
-				background: rgba($ltgrey, 0.2);
-			}
-		}
-		@media screen and (min-width: 1024px) {
-			&:nth-of-type(3n+1) {
-				margin-right: 10px;
-				margin-left: 0px;
-			}
-			&:nth-of-type(3n+2) {
-				margin-right: 5px;
-				margin-left: 5px;
-			}
-			&:nth-of-type(3n+3) {
-				margin-left: 10px;
-				margin-right: 0px;
-			}
-		}
-		.remove {
-			position: absolute;
-			top: 5px;
-			right: 5px;
-			height: 30px;
-			width: 30px;
-			border-radius: 50%;
-			box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
-			cursor: pointer;
-			text-indent: -9999px;
-			&:before, &:after {
-				height: 2px;
-				width: 12px;
-				position: absolute;
-				top: 0;
-				right: 0;
-				bottom: 0;
-				left: 0;
-				margin: auto;
-				background: $dkgrey;
-				content: '';
-			}
-			&:before {
-				@include transform(rotate(-45deg));
-			}
-			&:after {
-				@include transform(rotate(45deg));
-			}
-		}
-		.person-name {
-			border-bottom: 2px solid $ltgrey;
-			width: 100%;
-			text-align: center;
-			display: inline-block;
-			margin-bottom: 5px;
-		}
-		input {
-			width: 100%;
-			margin-bottom: 5px;
-			border-radius: 5px;
-			border: 1px solid $ltgrey;
-			box-shadow: 0;
-			@include transition(all 0.3s ease);
-			padding: 0 5px;
-			&[type="submit"] {
-				&:hover {
-					cursor: pointer;
-					box-shadow: 0 3px 10px rgba(0,0,0, 0.05);
-				}
-			}
-		}
-		.item {
-			@include display-flex();
-			@include justify-content(space-between);
-			@include flex-wrap(wrap);
-			position: relative;
-			z-index: 1;
-			&:after {
-				content: '';
-				height: 1px;
-				width: 100%;
-				position: absolute;
-				bottom: 0;
-				border-bottom: 1px dashed $ltgrey;
-			}
-			.item-name, .item-cost {
-				position: relative;
-				z-index: 1;
-			}
-			.item-totals {
-				width: 100%;
-			}
-		}
-		.item-totals {
-			width: 100%;
-			position: relative;
-			z-index: 1;
-			&:before {
-				content: '';
-				height: 1px;
-				width: 100%;
-				position: absolute;
-				top: 0;
-				border-top: 1px dashed $grey;
-			}
-			> div {
-				width: 100%;
-				@include display-flex();
-				@include justify-content(space-between);
-				@include flex-wrap(wrap);
-				&.total-container {
-					position: relative;
-					z-index: 1;
-					&:before {
-						content: '';
-						height: 1px;
-						width: 100%;
-						position: absolute;
-						top: 0;
-						border-top: 2px solid $grey;
-					}
-				}
-			}
-		}
-	}
-	.grand-total-container {
-		width: 100%;
-		@include display-flex();
-		@include justify-content(space-between);
-		@include flex-wrap(wrap);
-		padding: 15px 5px;
-		box-shadow: 0 3px 10px rgba(0,0,0, 0.15);
-		margin: 10px 0px;
-		max-width: 400px;
-		> div {
-			width: 100%;
-			@include display-flex();
-			@include justify-content(space-between);
-			@include flex-wrap(wrap);
-			&.grand-total {
-				position: relative;
-				z-index: 1;
-				background: rgba($ltgrey, 0.2);
-				font-weight: 700;
-				&:before {
-					content: '';
-					height: 1px;
-					width: 100%;
-					position: absolute;
-					top: 0;
-					border-top: 2px solid $grey;
-				}
-				span {
-					padding: 5px 0;
-				}
-			}
-			span {
-				line-height: 1.5em;
-			}
-		}
-	}
+    .bill-splitter-inner {
+        @include display-flex();
+        @include justify-content(flex-start);
+        @include flex-wrap(wrap);
+        width: 100%;
+    }
+    form.add-person-form {
+        @include placeholderFontColor($grey);
+        width: 100%;
+        @include display-flex();
+        @include justify-content(space-between);
+        @include flex-wrap(wrap);
+        .add-person-fields {
+            width: 100%;
+            @media screen and (min-width: 1024px) {
+                width: 50%;
+            }
+            input[name="personName"] {
+                @include textInputStyles;
+                width: calc(100% - 52px);
+                margin-right: 10px;
+            }
+        }
+        label.tax-tip-container {
+            width: calc(50% - 10px);
+            margin: 10px 0;
+            @media screen and (min-width: 1024px) {
+                width: calc(25% - 10px);
+                margin: 0;
+            }
+            input[name="tipPercentage"],
+            input[name="taxPercentage"] {
+                @include textInputStyles;
+                width: 100%;
+            }
+        }
+        input[type="submit"] {
+            width: 42px;
+            height: 42px;
+            padding: 0;
+            text-indent: -9999px;
+            background-color: $dkgrey;
+            @include mask-image('../images/user-plus-solid.svg');
+            @include mask-position(center);
+            @include mask-size(30px 30px);
+            @include mask-repeat(no-repeat);
+            opacity: 1;
+            @include transition(opacity 0.3s ease);
+            &:hover {
+                cursor: pointer;
+                opacity: 0.7;
+            }
+        }
+    }
+    .person-card {
+        width: calc(50% - 5px);
+        padding: 15px 5px;
+        display: inline-block;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        @include placeholderFontColor($grey);
+        margin-top: 10px;
+        margin-bottom: 10px;
+        position: relative;
+        @media screen and (min-width: 1024px) {
+            width: calc(33.33% - 10px);
+            margin: 10px;
+        }
+        &:nth-of-type(odd) {
+            margin-right: 5px;
+        }
+        &:nth-of-type(even) {
+            margin-left: 5px;
+            @media screen and (min-width: 1024px) {
+                background: rgba($ltgrey, 0.2);
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            &:nth-of-type(3n+1) {
+                margin-right: 10px;
+                margin-left: 0px;
+            }
+            &:nth-of-type(3n+2) {
+                margin-right: 5px;
+                margin-left: 5px;
+            }
+            &:nth-of-type(3n+3) {
+                margin-left: 10px;
+                margin-right: 0px;
+            }
+        }
+        .remove {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            height: 30px;
+            width: 30px;
+            border-radius: 50%;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+            cursor: pointer;
+            text-indent: -9999px;
+            &:before,
+            &:after {
+                height: 2px;
+                width: 12px;
+                position: absolute;
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                margin: auto;
+                background: $dkgrey;
+                content: '';
+            }
+            &:before {
+                @include transform(rotate(-45deg));
+            }
+            &:after {
+                @include transform(rotate(45deg));
+            }
+        }
+        .person-name {
+            border-bottom: 2px solid $ltgrey;
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            margin-bottom: 5px;
+        }
+        input {
+            width: 100%;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            border: 1px solid $ltgrey;
+            box-shadow: 0;
+            @include transition(all 0.3s ease);
+            padding: 0 5px;
+            &[type="submit"] {
+                &:hover {
+                    cursor: pointer;
+                    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+                }
+            }
+        }
+        .item {
+            @include display-flex();
+            @include justify-content(space-between);
+            @include flex-wrap(wrap);
+            position: relative;
+            z-index: 1;
+            &:after {
+                content: '';
+                height: 1px;
+                width: 100%;
+                position: absolute;
+                bottom: 0;
+                border-bottom: 1px dashed $ltgrey;
+            }
+            .item-name,
+            .item-cost {
+                position: relative;
+                z-index: 1;
+            }
+            .item-totals {
+                width: 100%;
+            }
+        }
+        .item-totals {
+            width: 100%;
+            position: relative;
+            z-index: 1;
+            &:before {
+                content: '';
+                height: 1px;
+                width: 100%;
+                position: absolute;
+                top: 0;
+                border-top: 1px dashed $grey;
+            }
+            >div {
+                width: 100%;
+                @include display-flex();
+                @include justify-content(space-between);
+                @include flex-wrap(wrap);
+                &.total-container {
+                    position: relative;
+                    z-index: 1;
+                    &:before {
+                        content: '';
+                        height: 1px;
+                        width: 100%;
+                        position: absolute;
+                        top: 0;
+                        border-top: 2px solid $grey;
+                    }
+                }
+            }
+        }
+    }
+    .grand-total-container {
+        width: 100%;
+        @include display-flex();
+        @include justify-content(space-between);
+        @include flex-wrap(wrap);
+        padding: 15px 5px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        margin: 10px 0px;
+        max-width: 400px;
+        >div {
+            width: 100%;
+            @include display-flex();
+            @include justify-content(space-between);
+            @include flex-wrap(wrap);
+            &.grand-total {
+                position: relative;
+                z-index: 1;
+                background: rgba($ltgrey, 0.2);
+                font-weight: 700;
+                &:before {
+                    content: '';
+                    height: 1px;
+                    width: 100%;
+                    position: absolute;
+                    top: 0;
+                    border-top: 2px solid $grey;
+                }
+                span {
+                    padding: 5px 0;
+                }
+            }
+            span {
+                line-height: 1.5em;
+            }
+        }
+    }
 }
