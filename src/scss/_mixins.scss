@@ -1,96 +1,113 @@
 @mixin transition ($args...) {
-	-webkit-transition: $args;
-	-o-transition: $args;
-	-moz-transition: $args;
-	transition: $args;
+    -webkit-transition: $args;
+    -o-transition: $args;
+    -moz-transition: $args;
+    transition: $args;
+}
+
+@mixin transition-delay($delay...) {
+    -moz-transition-delay: $delay;
+    -o-transition-delay: $delay;
+    -webkit-transition-delay: $delay;
+    transition-delay: $delay;
 }
 
 @mixin appearance ($value) {
-	-moz-appearance: $value;
-	-webkit-appearance: $value;
-	-o-appearance: $value;
-	-ms-appearance: $value;
-	appearance: $value;
+    -moz-appearance: $value;
+    -webkit-appearance: $value;
+    -o-appearance: $value;
+    -ms-appearance: $value;
+    appearance: $value;
 }
 
 @mixin animation($args...) {
-	-moz-animation: $args;
-	-webkit-animation: $args;
-	animation: $args;
+    -moz-animation: $args;
+    -webkit-animation: $args;
+    animation: $args;
 }
 
 @mixin display-flex() {
-	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-	display: -ms-flex;         /* IE 11 */
-	display: -ms-flexbox;      /* IE10 uses -ms-flexbox */
-	display: -webkit-flex;     /* NEW - Chrome */
-	display: flex;             /* NEW, Spec - Opera 12.1, Firefox 20+ */
+    display: -webkit-box;
+    /* OLD - iOS 6-, Safari 3.1-6 */
+    display: -moz-box;
+    /* OLD - Firefox 19- (buggy but mostly works) */
+    display: -ms-flex;
+    /* IE 11 */
+    display: -ms-flexbox;
+    /* IE10 uses -ms-flexbox */
+    display: -webkit-flex;
+    /* NEW - Chrome */
+    display: flex;
+    /* NEW, Spec - Opera 12.1, Firefox 20+ */
 }
 
-@mixin flex-wrap($wrap){
-	-webkit-flex-wrap: $wrap; /* Safari 6.1+ */
-	-ms-flex-wrap: $wrap;
-	flex-wrap: $wrap;
+@mixin flex-wrap($wrap) {
+    -webkit-flex-wrap: $wrap;
+    /* Safari 6.1+ */
+    -ms-flex-wrap: $wrap;
+    flex-wrap: $wrap;
 }
 
 @mixin justify-content ($position) {
-	-webkit-justify-content: $position;
-	-ms-justify-content: $position;
-	justify-content: $position;
+    -webkit-justify-content: $position;
+    -ms-justify-content: $position;
+    justify-content: $position;
 }
 
 @mixin align-items ($position) {
-	-webkit-align-items: $position;
-	-ms-align-items: $position;
-	align-items: $position;
+    -webkit-align-items: $position;
+    -ms-align-items: $position;
+    align-items: $position;
 }
 
-@mixin transform($args...){
-	-webkit-transform: $args;
-	-moz-transform: $args;
-	-o-transform: $args;
-	transform: $args;
+@mixin transform($args...) {
+    -webkit-transform: $args;
+    -moz-transform: $args;
+    -o-transform: $args;
+    transform: $args;
 }
 
-@mixin placeholderFontColor($color){
-	::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-		color: $color;
-	}
+@mixin placeholderFontColor($color) {
+    ::placeholder {
+        /* Chrome, Firefox, Opera, Safari 10.1+ */
+        color: $color;
+    }
 
-	:-ms-input-placeholder { /* Internet Explorer 10-11 */
-		color: $color;
-	}
+    :-ms-input-placeholder {
+        /* Internet Explorer 10-11 */
+        color: $color;
+    }
 
-	::-ms-input-placeholder { /* Microsoft Edge */
-		color: $color;
-	}
+    ::-ms-input-placeholder {
+        /* Microsoft Edge */
+        color: $color;
+    }
 }
 
 @mixin mask-image($url) {
-	-webkit-mask-image: url($url);
-	mask-image: url($url);
+    -webkit-mask-image: url($url);
+    mask-image: url($url);
 }
 
 @mixin mask-size($size) {
-	-webkit-mask-size: $size;
-	mask-size: $size;
+    -webkit-mask-size: $size;
+    mask-size: $size;
 }
 
 @mixin mask-position($position) {
-	-webkit-mask-position: $position;
-	mask-position: $position;
+    -webkit-mask-position: $position;
+    mask-position: $position;
 }
 
 @mixin mask-repeat($repeat) {
-	-webkit-mask-repeat: $repeat;
-	mask-repeat: $repeat;
+    -webkit-mask-repeat: $repeat;
+    mask-repeat: $repeat;
 }
 
 @mixin textInputStyles() {
-	border: 2px solid rgba($ltgrey, 1);
-	border-radius: 5px;
-	background: $white;
-	padding: 5px 10px;
-	color: $dkgrey;
+    border: 2px solid rgba($ltgrey, 1);
+    border-radius: 5px;
+    background: $white;
+    padding: 5px 10px;
+    color: $dkgrey;
 }
