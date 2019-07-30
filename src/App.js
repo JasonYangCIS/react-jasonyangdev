@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './css/App.css';
 import main           from './js/main'
-import Contentful     from './js/components/contentful'
-import Tabs           from './js/components/tabs';
-import Movies         from './js/components/movies';
-import Weather        from './js/components/weather';
-import Giphy          from './js/components/giphy';
-import BillSplitter   from './js/components/bill-splitter';
+import Contentful     from './components/contentful/contentful'
+import Tabs           from './components/tabs/tabs';
+import Movies         from './components/movies/movies';
+import Weather        from './components/weather/weather';
+import Giphy          from './components/giphy/giphy';
+import BillSplitter   from './components/bill-splitter/bill-splitter';
 
 class Header extends Component {
     constructor() {
@@ -24,7 +24,7 @@ class Header extends Component {
   render() {
     return(
       <header id="header">
-        <div className="image avatar"><a href onClick={() => main.handleClick()}></a></div>
+        <div className="image avatar"><a href={"javascript:void(0);"} onClick={() => main.handleClick()}></a></div>
         <span className="material-bar"></span>
       </header>
      )
@@ -201,12 +201,12 @@ class App extends Component {
  }
   render() {
     return (
-      <body id="top" primary-color-id="">
+      <div id="top" primary-color-id="">
         <Loader/>
         <Header/>
         <Body/>
         <Footer/>
-      </body>
+      </div>
     );
   }
 }

@@ -1,14 +1,18 @@
-@import '../scss/font-awesome.min.css';
-@import '../scss/open-weather-icons.scss';
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,400italic");
-@import '__legend.scss';
-@import '__mixins.scss';
-@import '__animations.scss';
-@import './components/_loading.scss';
-@import './components/_weather.scss';
-@import './components/_movies.scss';
-@import './components/_giphy.scss';
-@import './components/_bill-splitter.scss';
+
+
+@import '_fonts.scss';
+@import '_legend.scss';
+@import '_mixins.scss';
+@import '_animations.scss';
+@import '../components/font-awesome/font-awesome.min.css';
+@import '../components/weather/open-weather-icons.scss';
+@import '../components/loading/loading.scss';
+@import '../components/weather/weather.scss';
+@import '../components/movies/movies.scss';
+@import '../components/giphy/giphy.scss';
+@import '../components/bill-splitter/bill-splitter.scss';
+
 body {
     background: $white;
 }
@@ -16,7 +20,7 @@ body {
 * {
     box-sizing: border-box;
 }
-
+ 
 body,
 input,
 select,
@@ -326,7 +330,8 @@ ul.icons {
 
 #header {
     background-color: $blueGrey;
-    /* background-image: url("../images/overlay.png"), url("../images/bwalley.jpg"); */
+    /* background-image: url("../images/overlay.png"),
+         url("../images/bwalley.jpg"); */
     height: calc(100% - 155px);
     left: 0;
     padding: 4em 4em 0 4em;
