@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import './css/App.css';
-import Contentful     from './components/contentful/contentful'
-import Tabs           from './components/tabs/tabs';
-import Movies         from './components/movies/movies';
-import Weather        from './components/weather/weather';
-import Giphy          from './components/giphy/giphy';
-import BillSplitter   from './components/bill-splitter/bill-splitter';
+import Contentful from './components/contentful/contentful'
+import Tabs from './components/tabs/tabs';
+import Movies from './components/movies/movies';
+import Weather from './components/weather/weather';
+import Giphy from './components/giphy/giphy';
+import BillSplitter from './components/bill-splitter/bill-splitter';
 
 class Header extends Component {
-    constructor() {
+  constructor() {
     super();
-    
+
     this.state = {
       loading: true
     };
@@ -85,12 +85,12 @@ class Header extends Component {
   }
 
   render() {
-    return(
+    return (
       <header id="header">
         <div className="image avatar"><a href={"javascript:void(0);"} onClick={() => this.handleClick()}></a></div>
         <span className="material-bar"></span>
       </header>
-     )
+    )
   }
 }
 
@@ -100,7 +100,7 @@ class Introduction extends Component {
   }
 
   render() {
-    return(
+    return (
       <section id="one"></section>
     )
   }
@@ -112,8 +112,8 @@ class Skills extends Component {
   }
 
   render() {
-    return(
-     <section id="three"></section>
+    return (
+      <section id="three"></section>
     )
   }
 }
@@ -124,8 +124,8 @@ class Experience extends Component {
   }
 
   render() {
-    return(
-       <section id="four"></section>
+    return (
+      <section id="four"></section>
     )
   }
 }
@@ -148,7 +148,7 @@ class FavoriteBuilds extends Component {
   }
 
   render() {
-    return(
+    return (
       <section id="favorite-builds"></section>
     )
   }
@@ -162,36 +162,36 @@ class CodeSnippets extends Component {
   render() {
     return (
       <section id="code-snippets">
-       <div>
-         <Tabs>
-          
-          <div label="Bill Splitter">
-            <div id="bill-splitter-container">
-              <BillSplitter/>
-            </div>
-          </div>
+        <div>
+          <Tabs>
 
-          <div label="Giphy Search">
-            <div id="giphy-container">
-              <Giphy/>
+            <div label="Bill Splitter">
+              <div id="bill-splitter-container">
+                <BillSplitter />
+              </div>
             </div>
-          </div>
 
-          <div label="LA Weather">
-            <div id="weather-container">
-              <Weather/>
+            <div label="Giphy Search">
+              <div id="giphy-container">
+                <Giphy />
+              </div>
             </div>
-          </div>
 
-          <div label="Movies API">
-            <div id="movies-container">
-              <Movies/>
+            <div label="LA Weather">
+              <div id="weather-container">
+                <Weather />
+              </div>
             </div>
-          </div>
 
-        </Tabs>
-      </div>
-        
+            <div label="Movies API">
+              <div id="movies-container">
+                <Movies />
+              </div>
+            </div>
+
+          </Tabs>
+        </div>
+
       </section>
     );
   }
@@ -203,8 +203,8 @@ class Contact extends Component {
   }
 
   render() {
-    return(
-     <section id="six"></section>
+    return (
+      <section id="six"></section>
     )
   }
 }
@@ -214,7 +214,7 @@ class Footer extends Component {
     Contentful.footerBuilder()
   }
 
-  render () {
+  render() {
     return (
       <footer id="footer"></footer>
     )
@@ -223,22 +223,22 @@ class Footer extends Component {
 
 class Body extends Component {
   render() {
-    return(
+    return (
       <div id="main">
-        <Introduction/>
-        <Skills/>
-        <Experience/>
-        <Facts/>
-        <FavoriteBuilds/>
-        <CodeSnippets/>
-        <Contact/>
+        <Introduction />
+        <Skills />
+        <Experience />
+        <Facts />
+        <FavoriteBuilds />
+        <CodeSnippets />
+        <Contact />
       </div>
     )
   }
 }
 
 class Loader extends Component {
-  render () {
+  render() {
     return (
       <div id="loading-container">
         <div className="loading-icon">
@@ -265,6 +265,7 @@ class App extends Component {
   addEventListeners = () => {
     window.addEventListener('load', this.handleLoad);
     window.addEventListener('load', this.animateSection);
+    window.addEventListener('load', this.vantaHeaderBackground);
     window.addEventListener('scroll', this.animateSection, true);
   }
 
@@ -274,13 +275,29 @@ class App extends Component {
 
   animateSection = () => {
     let sectionEles = document.querySelectorAll('#main section');
-    
+    let animatedEles = document.querySelectorAll('#main section.fade-in');
+
     for (var i = 0; i < sectionEles.length; i++) {
       if (this.isAnyPartOfElementInViewport(sectionEles[i])) {
         sectionEles[i].classList.add('fade-in');
       }
     }
 
+    // remove scroll to event listeners
+    if (sectionEles.length == animatedEles.length) {
+      this.removeEventListeners();
+    }
+
+  }
+
+  vantaHeaderBackground = () => {
+    window.VANTA.DOTS({
+      el: "#header",
+      color: 0xd27e36,
+      color2: 0xc5620c,
+      size: 10.00,
+      spacing: 45.00
+    })
   }
 
   isAnyPartOfElementInViewport = (el) => {
