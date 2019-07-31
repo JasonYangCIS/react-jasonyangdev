@@ -291,13 +291,15 @@ class App extends Component {
   }
 
   vantaHeaderBackground = () => {
-    window.VANTA.DOTS({
-      el: "#header",
-      color: 0xd27e36,
-      color2: 0xc5620c,
-      size: 5.00,
-      spacing: 20.00
-    })
+    setTimeout(function () {
+      window.VANTA.DOTS({
+        el: "#header",
+        color: 0xd27e36,
+        color2: 0xc5620c,
+        size: 5.00,
+        spacing: 20.00
+      })
+    }, 250);
   }
 
   isAnyPartOfElementInViewport = (el) => {
