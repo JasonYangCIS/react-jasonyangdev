@@ -385,8 +385,7 @@ ul.icons {
     }
 
     canvas {
-        height: 100% !important;
-        width: 100% !important;
+        min-height: 410px;
     }
 
     .image.avatar {
