@@ -284,7 +284,7 @@ class App extends Component {
     }
 
     // remove scroll to event listeners
-    if (sectionEles.length == animatedEles.length) {
+    if (sectionEles.length === animatedEles.length) {
       this.removeEventListeners();
     }
 
@@ -295,8 +295,8 @@ class App extends Component {
       el: "#header",
       color: 0xd27e36,
       color2: 0xc5620c,
-      size: 10.00,
-      spacing: 45.00
+      size: 5.00,
+      spacing: 20.00
     })
   }
 
