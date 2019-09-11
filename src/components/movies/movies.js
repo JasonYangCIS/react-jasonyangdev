@@ -8,13 +8,15 @@ class Movies extends Component {
     this.state = {
       nowPlaying: '',
       upcoming: '',
+      popular: '',
       loading: true
     };
   }
 
   componentDidMount() {
-    const urls = ['https://api.themoviedb.org/3/movie/now_playing?api_key=2d938576d49bfeb2806a2b8f67ddc662&language=en-US&page=1&region=us',
-                  'https://api.themoviedb.org/3/movie/upcoming?api_key=2d938576d49bfeb2806a2b8f67ddc662&language=en-US&page=1&region=us'];
+    const urls = ['https://api.themoviedb.org/3/movie/now_playing?page=1&language=en-US&api_key=2d938576d49bfeb2806a2b8f67ddc662',
+                  'https://api.themoviedb.org/3/movie/upcoming?page=1&language=en-US&api_key=2d938576d49bfeb2806a2b8f67ddc662',
+                  'https://api.themoviedb.org/3/movie/popular?page=1&language=en-US&api_key=2d938576d49bfeb2806a2b8f67ddc662'];
 
     Promise.all(urls.map(url => 
         fetch(url)
@@ -37,6 +39,7 @@ class Movies extends Component {
 
           let nowPlaying = "now_playing";
           let upcoming = "upcoming";
+          let popular = "popular";
 
           if ( url.includes(nowPlaying) ) {
             this.setState({
@@ -48,7 +51,12 @@ class Movies extends Component {
               upcoming: htmlBuilder,
               loading: false
             })
-          }
+          } else if ( url.includes(popular) ) {
+            this.setState({
+              popular: htmlBuilder,
+              loading: false
+          })
+        }
 
         })
         .catch(error => {
@@ -62,7 +70,7 @@ class Movies extends Component {
   }
 
   render() {
-    const { nowPlaying, upcoming, loading } = this.state;
+    const { nowPlaying, upcoming, popular, loading } = this.state;
     function createMarkup(obj) { return {__html: obj}; };
     
     if(loading) {
@@ -78,6 +86,9 @@ class Movies extends Component {
 
         <h5>Upcoming</h5>
         <ul dangerouslySetInnerHTML={createMarkup(upcoming)} />
+
+        <h5>Popular</h5>
+        <ul dangerouslySetInnerHTML={createMarkup(popular)} />
       </div>
     );
   }
