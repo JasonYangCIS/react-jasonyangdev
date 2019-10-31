@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './css/App.css';
 import Contentful from './components/contentful/contentful'
 import Tabs from './components/tabs/tabs';
-import Movies from './components/movies/movies';
 import Weather from './components/weather/weather';
 import Giphy from './components/giphy/giphy';
 import BillSplitter from './components/bill-splitter/bill-splitter';
@@ -180,12 +179,6 @@ class CodeSnippets extends Component {
             <div label="LA Weather">
               <div id="weather-container">
                 <Weather />
-              </div>
-            </div>
-
-            <div label="Movies API">
-              <div id="movies-container">
-                <Movies />
               </div>
             </div>
 
