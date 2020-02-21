@@ -219,8 +219,8 @@ class Body extends Component {
     return (
       <div id="main">
         <Introduction />
-        <Skills />
         <Experience />
+        <Skills />
         <Facts />
         <FavoriteBuilds />
         <CodeSnippets />
